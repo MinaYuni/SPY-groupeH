@@ -70,12 +70,13 @@ public class LevelGenerator : FSystem {
 				}
 			});
 		}
+		
 	}
 
 	// Read xml document and create all game objects
 	public void XmlToLevel(XmlDocument doc)
 	{
-
+		gameData.triggerMessage = new Dictionary<(int, int, int),string>();
 		gameData.totalActionBlocUsed = 0;
 		gameData.totalStep = 0;
 		gameData.totalExecute = 0;
@@ -129,7 +130,7 @@ public class LevelGenerator : FSystem {
 					createDoor(int.Parse(child.Attributes.GetNamedItem("posX").Value), int.Parse(child.Attributes.GetNamedItem("posY").Value),
 					(Direction.Dir)int.Parse(child.Attributes.GetNamedItem("direction").Value), int.Parse(child.Attributes.GetNamedItem("slotId").Value));
 					break;
-				case "trigger":
+				case "triggers":
 					readXMLTriggers(child);
 					break;
 				case "player":
@@ -385,7 +386,7 @@ public class LevelGenerator : FSystem {
 	private void readXMLTriggers(XmlNode triggers){
 		foreach (XmlNode trigger in triggers.ChildNodes){
 			string text_pop_up = null;
-			if (trigger.Attributes.GetNamedItem("popup_title") != null)
+			if (trigger.Attributes.GetNamedItem("popup") != null)
 				text_pop_up = trigger.Attributes.GetNamedItem("popup").Value;
 
 			string src = null;

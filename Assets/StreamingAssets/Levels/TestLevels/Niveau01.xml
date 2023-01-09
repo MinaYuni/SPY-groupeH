@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<level>
+  <map>
+    <line>
+      <cell value="1" />
+      <cell value="-1" />
+      <cell value="1" />
+      <cell value="-1" />
+      <cell value="-1" />
+    </line>
+    <line>
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="3" />
+      <cell value="1" />
+    </line>
+    <line>
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="1" />
+    </line>
+    <line>
+      <cell value="1" />
+      <cell value="2" />
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="1" />
+    </line>
+  </map>
+  <dialogs>
+    <dialog text="Une nouvelle machine ! On dirait une sorte d'imprimante 3D. Tu vas probablement devoir t'en servir.&#xA; " />
+  </dialogs>
+  <blockLimits>
+    <blockLimit blockType="Forward" limit="-1" />
+    <blockLimit blockType="TurnLeft" limit="-1" />
+    <blockLimit blockType="TurnRight" limit="-1" />
+    <blockLimit blockType="Wait" limit="0" />
+    <blockLimit blockType="Activate" limit="-1" />
+    <blockLimit blockType="TurnBack" limit="-1" />
+    <blockLimit blockType="IfThen" limit="0" />
+    <blockLimit blockType="IfElse" limit="0" />
+    <blockLimit blockType="ForLoop" limit="0" />
+    <blockLimit blockType="While" limit="0" />
+    <blockLimit blockType="Forever" limit="0" />
+    <blockLimit blockType="AndOperator" limit="0" />
+    <blockLimit blockType="OrOperator" limit="0" />
+    <blockLimit blockType="NotOperator" limit="0" />
+    <blockLimit blockType="WallFront" limit="0" />
+    <blockLimit blockType="WallLeft" limit="0" />
+    <blockLimit blockType="WallRight" limit="0" />
+    <blockLimit blockType="Enemy" limit="0" />
+    <blockLimit blockType="RedArea" limit="0" />
+    <blockLimit blockType="FieldGate" limit="0" />
+    <blockLimit blockType="Terminal" limit="0" />
+    <blockLimit blockType="Exit" limit="0" />
+  </blockLimits>
+  <console state="1" posY="1" posX="1" direction="0">
+    <slot slotId="0" />
+  </console>
+  <player associatedScriptName="Bob" posY="3" posX="1" direction="0" />
+  <door posY="2" posX="2" direction="3" slotId="0" />
+  <triggers>
+    <trigger robot_posY="2" robot_posX="1" robot_direction="2" trigger_id="trigger_door" popup="HEY ! Tu n'as pas la clé pour ouvrir cette porte." popup_title="Porte 07" />
+  </triggers>
+</level>
