@@ -2780,7 +2780,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 649317142}
   m_HandleRect: {fileID: 649317141}
   m_Direction: 0
-  m_Value: 0.00000019073485
+  m_Value: 0.00000014305114
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -8145,7 +8145,6 @@ GameObject:
   - component: {fileID: 361349242}
   - component: {fileID: 361349243}
   - component: {fileID: 361349244}
-  - component: {fileID: 361349245}
   m_Layer: 0
   m_Name: Main_Loop
   m_TagString: Untagged
@@ -8408,14 +8407,6 @@ MonoBehaviour:
   - _typeAssemblyQualifiedName: VirtualKeyboardManager, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     _typeFullName: VirtualKeyboardManager
-    _pause: 0
-  - _typeAssemblyQualifiedName: SendStatements, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    _typeFullName: SendStatements
-    _pause: 0
-  - _typeAssemblyQualifiedName: ParamCompetenceSystem, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    _typeFullName: ParamCompetenceSystem
     _pause: 0
   _lateUpdateSystemDescriptions:
   - _typeAssemblyQualifiedName: HighLightSystem, Assembly-CSharp, Version=0.0.0.0,
@@ -8766,35 +8757,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 361349215}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a01cbfe3b9516db4ca61fe2a246495f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 6721a44171a073a409dfee0982d0a4c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &361349245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 361349215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aace754a597593b42b497e4ae7190bd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  referentialSelector: {fileID: 0}
-  panelInfoComp: {fileID: 0}
-  prefabComp: {fileID: 0}
-  ContentCompMenu: {fileID: 0}
-  compatibleLevelsPanel: {fileID: 0}
-  competenciesPanel: {fileID: 0}
-  levelCompatiblePrefab: {fileID: 0}
-  contentListOfCompatibleLevel: {fileID: 0}
-  contentInfoCompatibleLevel: {fileID: 0}
-  deletableElement: {fileID: 0}
-  contentScenario: {fileID: 0}
-  testLevel: {fileID: 0}
-  addToScenario: {fileID: 0}
-  savingPanel: {fileID: 0}
 --- !u!1 &371440127
 GameObject:
   m_ObjectHideFlags: 0
@@ -13170,8 +13135,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 665381104}
   m_HandleRect: {fileID: 665381103}
   m_Direction: 2
-  m_Value: 0.9999975
-  m_Size: 0.31443503
+  m_Value: 0.9999976
+  m_Size: 0.30564636
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
