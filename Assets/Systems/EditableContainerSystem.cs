@@ -104,16 +104,8 @@ public class EditableContainerSystem : FSystem
 	// used on + button (see in Unity editor)
 	public void addContainer()
 	{
-		string newName = addSpecificContainer();
+		addSpecificContainer();
 		MainLoop.instance.StartCoroutine(syncEditableScrollBars());
-		GameObjectManager.addComponent<ActionPerformedForLRS>(MainLoop.instance.gameObject, new
-		{
-			verb = "created",
-			objectType = "script",
-			activityExtensions = new Dictionary<string, string>() {
-				{ "value", newName }
-			}
-		});
 	}
 
 	// Move editable view on the last editable container
@@ -128,8 +120,8 @@ public class EditableContainerSystem : FSystem
 		EditableCanvas.GetComponentInParent<ScrollRect>().horizontalScrollbar.value = 1;
 	}
 
-	// Ajouter un container à la scéne retourne son nom définitif
-	private string addSpecificContainer(string name = "", UIRootContainer.EditMode editState = UIRootContainer.EditMode.Editable, UIRootContainer.SolutionType typeState = UIRootContainer.SolutionType.Undefined, List<GameObject> script = null)
+	// Ajouter un container à la scéne
+	private void addSpecificContainer(string name = "", UIRootContainer.EditMode editState = UIRootContainer.EditMode.Editable, UIRootContainer.SolutionType typeState = UIRootContainer.SolutionType.Undefined, List<GameObject> script = null)
 	{
 		if (!nameContainerUsed(name))
 		{
@@ -164,7 +156,6 @@ public class EditableContainerSystem : FSystem
 						cloneContainer.GetComponentInChildren<UIRootContainer>().scriptName = "Script" + i;
 						// On affiche le bon nom sur le container
 						cloneContainer.GetComponentInChildren<TMP_InputField>().text = "Script" + i;
-						name = "Script" + i;
 						nameOk = true;
 					}
 				}
@@ -212,10 +203,7 @@ public class EditableContainerSystem : FSystem
 
 			// Update size of parent GameObject
 			MainLoop.instance.StartCoroutine(setEditableSize());
-			return name;
 		}
-		else
-			return "";
 	}
 
 	private IEnumerator setEditableSize()
@@ -240,17 +228,8 @@ public class EditableContainerSystem : FSystem
 	// See ResetButton in ViewportScriptContainer prefab in editor
 	public void resetScriptContainer()
 	{
-		// On récupére le container pointé lors du clic de la balayette
+		// On récupére le contenair pointé lors du clic de la balayette
 		GameObject scriptContainerPointer = f_viewportContainerPointed.First().transform.Find("ScriptContainer").gameObject;
-
-		GameObjectManager.addComponent<ActionPerformedForLRS>(MainLoop.instance.gameObject, new
-		{
-			verb = "cleaned",
-			objectType = "script",
-			activityExtensions = new Dictionary<string, string>() {
-				{ "value", scriptContainerPointer.transform.Find("Header").Find("ContainerName").GetComponent<TMP_InputField>().text }
-			}
-		});
 
 		deleteContent(scriptContainerPointer);
 	}
@@ -259,18 +238,7 @@ public class EditableContainerSystem : FSystem
 	// See RemoveButton in ViewportScriptContainer prefab in editor
 	public void removeContainer(GameObject container)
 	{
-		GameObject scriptContainerPointer = container.transform.GetChild(0).gameObject;
-
-		GameObjectManager.addComponent<ActionPerformedForLRS>(MainLoop.instance.gameObject, new
-		{
-			verb = "deleted",
-			objectType = "script",
-			activityExtensions = new Dictionary<string, string>() {
-				{ "value", scriptContainerPointer.transform.Find("Header").Find("ContainerName").GetComponent<TMP_InputField>().text }
-			}
-		});
-
-		deleteContent(scriptContainerPointer);
+		deleteContent(container.transform.GetChild(0).gameObject);
 		MainLoop.instance.StartCoroutine(realDelete(container));
 	}
 
@@ -279,7 +247,7 @@ public class EditableContainerSystem : FSystem
 		// On parcourt le script container pour détruire toutes les instructions
 		for (int i = container.transform.childCount - 1; i >= 0; i--)
 			if (container.transform.GetChild(i).GetComponent<BaseElement>())
-				GameObjectManager.addComponent<NeedToDelete>(container.transform.GetChild(i).gameObject, new { silent = true });
+				GameObjectManager.addComponent<NeedToDelete>(container.transform.GetChild(i).gameObject);
 	}
 
 	private IEnumerator realDelete(GameObject container)
@@ -315,15 +283,6 @@ public class EditableContainerSystem : FSystem
 				// On change pour son nouveau nom
 				containerSelected.scriptName = newName;
 				containerSelected.transform.Find("Header").Find("ContainerName").GetComponent<TMP_InputField>().text = newName;
-				GameObjectManager.addComponent<ActionPerformedForLRS>(containerSelected.gameObject, new
-				{
-					verb = "renamed",
-					objectType = "script",
-					activityExtensions = new Dictionary<string, string>() {
-						{ "oldValue", oldName },
-						{ "value", newName }
-					}
-				});
 			}
 			else
 			{ // Sinon on annule le changement

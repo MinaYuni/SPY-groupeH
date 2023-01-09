@@ -1,7 +1,6 @@
 using UnityEngine;
 using FYFY;
 using TMPro;
-using System.Collections.Generic;
 
 /// <summary>
 /// This system enables to manage game mode: playmode vs editmode
@@ -44,10 +43,5 @@ public class ModeManager : FSystem {
 	public void setEditMode()
 	{
 		GameObjectManager.addComponent<EditMode>(MainLoop.instance.gameObject);
-		GameObjectManager.addComponent<ActionPerformedForLRS>(MainLoop.instance.gameObject, new
-		{
-			verb = "stopped",
-			objectType = "program"
-		});
 	}
 }
