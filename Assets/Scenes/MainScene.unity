@@ -8760,6 +8760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6721a44171a073a409dfee0982d0a4c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogPanel: {fileID: 2103625724}
 --- !u!1 &371440127
 GameObject:
   m_ObjectHideFlags: 0
