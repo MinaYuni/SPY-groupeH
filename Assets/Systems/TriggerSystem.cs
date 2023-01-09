@@ -7,7 +7,7 @@ public class TriggerSystem : FSystem {
 	public static TriggerSystem instance;
 // fam manager to get agent edit then allCompononents
 // 
-	private GameData gameData;
+	private GameData gameData = FamilyManager.getFamily(new AllOfComponents(typeof(GameData))).First().GetComponent<GameData>();
 
 	public TriggerSystem()
 	{
@@ -16,7 +16,7 @@ public class TriggerSystem : FSystem {
 	
 	// Use to init system before the first onProcess call
 	protected override void onStart(){
-		gameData = GameObject.Find("GameData").GetComponent<GameData>();
+
 	}
 
 	// Use to process your families.
@@ -29,7 +29,8 @@ public class TriggerSystem : FSystem {
 			var key = (pos.x, pos.y, (int)direction.direction);
 			
 			if(gameData.triggerMessage.ContainsKey(key)){
-				// Debug.Log(gameData.triggerMessage[key]);
+				Debug.Log(gameData.triggerMessage[key]);
+
 			}
 			
 			
