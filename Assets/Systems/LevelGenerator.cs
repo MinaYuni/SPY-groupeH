@@ -69,7 +69,7 @@ public class LevelGenerator : FSystem {
 	public void XmlToLevel(XmlDocument doc)
 	{
 		gameData.triggerMessage = new Dictionary<(int, int, int),string>();
-		gameData.items = new Dictionary<(int, int), string>();
+		gameData.items = new Dictionary<(int, int), (string, int)>();
 		gameData.totalActionBlocUsed = 0;
 		gameData.totalStep = 0;
 		gameData.totalExecute = 0;
@@ -412,6 +412,9 @@ public class LevelGenerator : FSystem {
 			string item_name = null;
 			if (item.Attributes.GetNamedItem("item_name") != null)
 				item_name = item.Attributes.GetNamedItem("item_name").Value;
+			int item_id = -1;
+			if (item.Attributes.GetNamedItem("item_id") != null)
+				item_id = int.Parse(item.Attributes.GetNamedItem("item_id").Value);
 			int item_posX = -1;
 			if (item.Attributes.GetNamedItem("item_posX") != null)
 				item_posX = int.Parse(item.Attributes.GetNamedItem("item_posX").Value);
@@ -419,7 +422,8 @@ public class LevelGenerator : FSystem {
 			if (item.Attributes.GetNamedItem("item_posY") != null)
 				item_posY = int.Parse(item.Attributes.GetNamedItem("item_posY").Value);
 			
-			gameData.items[(item_posX, item_posY)] = item_name;
+			gameData.items[(item_posX, item_posY)] = (item_name, item_id);
+			// Debug.Log("game data items : " + gameData.items[(item_posX, item_posY)]);
 		}
 	}
 

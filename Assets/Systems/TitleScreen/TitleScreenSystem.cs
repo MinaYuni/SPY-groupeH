@@ -75,7 +75,7 @@ public class TitleScreenSystem : FSystem {
 			backpack = GameObject.Find("Backpack").GetComponent<Backpack>();
 		}
 		
-		backpack.available_slots = new List<string>();
+		backpack.available_slots = new List<(string, int)>();
 
 		if (!GameObject.Find("GameData"))
 		{

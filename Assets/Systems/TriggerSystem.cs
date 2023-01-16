@@ -42,7 +42,7 @@ public class TriggerSystem : FSystem {
 				// Debug.Log(gameData.triggerMessage[key]);
 				
 				configureDialog(gameData.triggerMessage[key]);
-				popped = true;
+				// popped = true;
 
 			}
 			
