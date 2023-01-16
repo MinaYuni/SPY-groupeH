@@ -16396,6 +16396,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabGameData: {fileID: 3833649377614804033, guid: 0c781d4c9bf00bb48ad0e4df8f089e03,
     type: 3}
+  prefabBackpack: {fileID: 431504094526762188, guid: 4708950869077b447b8de3de2b039784,
+    type: 3}
   mainCanvas: {fileID: 350375277}
   MainMenu: {fileID: 1667186165}
   Title: {fileID: 1502577898}

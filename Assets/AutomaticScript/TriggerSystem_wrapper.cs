@@ -15,4 +15,9 @@ public class TriggerSystem_wrapper : BaseWrapper
 		MainLoop.callAppropriateSystemMethod (system, "setActiveOKButton", active);
 	}
 
+	public void closeDialogPanel()
+	{
+		MainLoop.callAppropriateSystemMethod (system, "closeDialogPanel", null);
+	}
+
 }

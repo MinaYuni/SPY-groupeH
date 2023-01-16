@@ -17,6 +17,8 @@ using System.Runtime.InteropServices;
 public class TitleScreenSystem : FSystem {
 	private GameData gameData;
 	public GameData prefabGameData;
+	private Backpack backpack;
+	public Backpack prefabBackpack;
 	public GameObject mainCanvas;
 	public GameObject MainMenu; 
 	public GameObject Title;
@@ -62,12 +64,25 @@ public class TitleScreenSystem : FSystem {
 	}
 
 	protected override void onStart()
-	{
+	{	
+		if (!GameObject.Find("Backpack")){
+			backpack = UnityEngine.Object.Instantiate(prefabBackpack);
+			backpack.name = "Backpack";
+			GameObjectManager.dontDestroyOnLoadAndRebind(backpack.gameObject);
+
+		}
+		else{
+			backpack = GameObject.Find("Backpack").GetComponent<Backpack>();
+		}
+		
+		backpack.available_slots = new List<string>();
+
 		if (!GameObject.Find("GameData"))
 		{
 			gameData = UnityEngine.Object.Instantiate(prefabGameData);
 			gameData.name = "GameData";
 			GameObjectManager.dontDestroyOnLoadAndRebind(gameData.gameObject);
+
 		}
 		else
 		{

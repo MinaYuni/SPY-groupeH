@@ -32,10 +32,10 @@ public class TriggerSystem : FSystem {
 	// Use to process your families.
 	protected override void onProcess(int familiesUpdateCount) {
 		// Debug.Log("hey we are in the onProcess");
-		foreach(GameObject go in f_players){
+		foreach(GameObject player in f_players){
 			
-			var pos = go.GetComponent<Position>();
-			var direction = go.GetComponent<Direction>();
+			var pos = player.GetComponent<Position>();
+			var direction = player.GetComponent<Direction>();
 			var key = (pos.x, pos.y, (int)direction.direction);
 			
 			if(gameData.triggerMessage.ContainsKey(key)){

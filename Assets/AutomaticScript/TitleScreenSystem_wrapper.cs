@@ -4,6 +4,7 @@ using FYFY;
 public class TitleScreenSystem_wrapper : BaseWrapper
 {
 	public GameData prefabGameData;
+	public Backpack prefabBackpack;
 	public UnityEngine.GameObject mainCanvas;
 	public UnityEngine.GameObject MainMenu;
 	public UnityEngine.GameObject Title;
@@ -19,6 +20,7 @@ public class TitleScreenSystem_wrapper : BaseWrapper
 	{
 		this.hideFlags = HideFlags.NotEditable;
 		MainLoop.initAppropriateSystemField (system, "prefabGameData", prefabGameData);
+		MainLoop.initAppropriateSystemField (system, "prefabBackpack", prefabBackpack);
 		MainLoop.initAppropriateSystemField (system, "mainCanvas", mainCanvas);
 		MainLoop.initAppropriateSystemField (system, "MainMenu", MainMenu);
 		MainLoop.initAppropriateSystemField (system, "Title", Title);

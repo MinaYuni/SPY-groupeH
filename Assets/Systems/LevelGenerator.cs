@@ -69,6 +69,7 @@ public class LevelGenerator : FSystem {
 	public void XmlToLevel(XmlDocument doc)
 	{
 		gameData.triggerMessage = new Dictionary<(int, int, int),string>();
+		gameData.items = new Dictionary<(int, int), string>();
 		gameData.totalActionBlocUsed = 0;
 		gameData.totalStep = 0;
 		gameData.totalExecute = 0;
@@ -124,6 +125,9 @@ public class LevelGenerator : FSystem {
 					break;
 				case "triggers":
 					readXMLTriggers(child);
+					break;
+				case "items":
+					readXMLItems(child);
 					break;
 				case "player":
 				case "enemy":
@@ -401,6 +405,22 @@ public class LevelGenerator : FSystem {
 			
 		}
 		
+	}
+
+	private void readXMLItems(XmlNode items){
+		foreach (XmlNode item in items.ChildNodes){
+			string item_name = null;
+			if (item.Attributes.GetNamedItem("item_name") != null)
+				item_name = item.Attributes.GetNamedItem("item_name").Value;
+			int item_posX = -1;
+			if (item.Attributes.GetNamedItem("item_posX") != null)
+				item_posX = int.Parse(item.Attributes.GetNamedItem("item_posX").Value);
+			int item_posY = -1;
+			if (item.Attributes.GetNamedItem("item_posY") != null)
+				item_posY = int.Parse(item.Attributes.GetNamedItem("item_posY").Value);
+			
+			gameData.items[(item_posX, item_posY)] = item_name;
+		}
 	}
 
 	private void readXMLDialogs(XmlNode dialogs)
