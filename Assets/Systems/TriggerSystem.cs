@@ -11,6 +11,10 @@ public class TriggerSystem : FSystem {
 	private Family f_players = FamilyManager.getFamily(new AnyOfTags("Player"));
 	public static TriggerSystem instance;
 	private GameData gameData = FamilyManager.getFamily(new AllOfComponents(typeof(GameData))).First().GetComponent<GameData>();
+	private Family f_door = FamilyManager.getFamily(new AnyOfTags("Door"));
+	private Family f_backpack = FamilyManager.getFamily(new AllOfComponents(typeof(Backpack)));
+
+	
 	public GameObject dialogPanel;
 	private bool popped;
 	// private Tuple curr_pos;
@@ -31,21 +35,45 @@ public class TriggerSystem : FSystem {
 
 	// Use to process your families.
 	protected override void onProcess(int familiesUpdateCount) {
-		// Debug.Log("hey we are in the onProcess");
-		foreach(GameObject player in f_players){
-			
+
+		foreach(GameObject player in f_players){	
 			var pos = player.GetComponent<Position>();
 			var direction = player.GetComponent<Direction>();
 			var key = (pos.x, pos.y, (int)direction.direction);
 			
-			if(gameData.triggerMessage.ContainsKey(key)){
-				// Debug.Log(gameData.triggerMessage[key]);
-				
+			if(gameData.triggerMessage.ContainsKey(key)){				
 				configureDialog(gameData.triggerMessage[key]);
-				// popped = true;
-
+				popped = true;
 			}
-			
+
+			else if(gameData.triggerDoor.ContainsKey(key)){ // if trigger is for a door
+				var slot_id = gameData.triggerDoor[key].Item2;
+				bool closed = true;
+				bool hasKey = false;
+
+				foreach (GameObject door in f_door){
+					if(door.GetComponent<ActivationSlot>().slotID == slot_id){
+						closed = door.activeSelf; // check if door is closed or open
+						var backp = f_backpack.First().GetComponent<Backpack>().available_slots;
+						foreach(var item in backp){
+							if(item.Item1 == "key" && item.Item2 == slot_id){
+								hasKey = true;
+							}
+						}
+					}
+				}
+				if(closed && !hasKey){ // if door is closed then pop up
+					string te = gameData.triggerDoor[key].Item1;
+					configureDialog(te);
+					popped = true;
+				}
+				else{
+					popped = false; // probably not necessary
+				}
+			}
+			else{
+				popped = false;
+			}
 		}
 	}
 

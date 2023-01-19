@@ -69,6 +69,7 @@ public class LevelGenerator : FSystem {
 	public void XmlToLevel(XmlDocument doc)
 	{
 		gameData.triggerMessage = new Dictionary<(int, int, int),string>();
+		gameData.triggerDoor = new Dictionary<(int, int, int),(string, int)>();
 		gameData.items = new Dictionary<(int, int), (string, int)>();
 		gameData.totalActionBlocUsed = 0;
 		gameData.totalStep = 0;
@@ -381,6 +382,7 @@ public class LevelGenerator : FSystem {
 
 	private void readXMLTriggers(XmlNode triggers){
 		foreach (XmlNode trigger in triggers.ChildNodes){
+
 			string text_pop_up = null;
 			if (trigger.Attributes.GetNamedItem("popup") != null)
 				text_pop_up = trigger.Attributes.GetNamedItem("popup").Value;
@@ -388,21 +390,39 @@ public class LevelGenerator : FSystem {
 			string src = null;
 			if (trigger.Attributes.GetNamedItem("img") != null)
 				src = trigger.Attributes.GetNamedItem("img").Value;
+
 			float imgHeight = -1;
 			if (trigger.Attributes.GetNamedItem("imgHeight") != null)
 				imgHeight = float.Parse(trigger.Attributes.GetNamedItem("imgHeight").Value);
+
 			int robot_posX = -1;
 			if (trigger.Attributes.GetNamedItem("robot_posX") != null)
 				robot_posX = int.Parse(trigger.Attributes.GetNamedItem("robot_posX").Value);
+
 			int robot_posY = -1;
 			if (trigger.Attributes.GetNamedItem("robot_posY") != null)
 				robot_posY = int.Parse(trigger.Attributes.GetNamedItem("robot_posY").Value);
+
 			int robot_direction = -1;
 			if (trigger.Attributes.GetNamedItem("robot_direction") != null)
 				robot_direction = int.Parse(trigger.Attributes.GetNamedItem("robot_direction").Value);
-			
-			gameData.triggerMessage[(robot_posX, robot_posY, robot_direction)] = text_pop_up;
-			
+
+
+			if(trigger.Attributes.GetNamedItem("door_id") != null){
+				int door_id = int.Parse(trigger.Attributes.GetNamedItem("door_id").Value);
+				int posX = -1;
+				if (trigger.Attributes.GetNamedItem("door_posX") != null)
+					posX = int.Parse(trigger.Attributes.GetNamedItem("door_posX").Value);
+
+				int posY = -1;
+				if (trigger.Attributes.GetNamedItem("door_posY") != null)
+					posY = int.Parse(trigger.Attributes.GetNamedItem("door_posY").Value);
+
+				gameData.triggerDoor[(robot_posX, robot_posY, robot_direction)] = (text_pop_up, door_id);
+			}
+			else{
+				gameData.triggerMessage[(robot_posX, robot_posY, robot_direction)] = text_pop_up;
+			}
 		}
 		
 	}
