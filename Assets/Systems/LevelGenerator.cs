@@ -354,8 +354,8 @@ public class LevelGenerator : FSystem {
 		printer.GetComponent<Position>().x = gridX;
 		printer.GetComponent<Position>().y = gridY;
 		printer.GetComponent<Direction>().direction = orientation;
-		if (state == 1)
-			printer.AddComponent<TurnedOn>();
+		// if (state == 1)
+		// 	printer.AddComponent<TurnedOn>();
 		GameObjectManager.bind(printer);
 	
 	}
