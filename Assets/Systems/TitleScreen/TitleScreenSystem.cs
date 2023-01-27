@@ -17,13 +17,18 @@ using System.Runtime.InteropServices;
 public class TitleScreenSystem : FSystem {
 	private GameData gameData;
 	public GameData prefabGameData;
+	private Backpack backpack;
+	public Backpack prefabBackpack;
 	public GameObject mainCanvas;
+	public GameObject MainMenu; 
+	public GameObject Title;
 	public GameObject campagneMenu;
 	public GameObject compLevelButton;
 	public GameObject listOfCampaigns;
 	public GameObject listOfLevels;
 	public GameObject loadingScenarioContent;
 	public GameObject scenarioContent;
+	public GameObject campaignName;
 	public GameObject quitButton;
 
 	private GameObject selectedScenario;
@@ -59,12 +64,25 @@ public class TitleScreenSystem : FSystem {
 	}
 
 	protected override void onStart()
-	{
+	{	
+		if (!GameObject.Find("Backpack")){
+			backpack = UnityEngine.Object.Instantiate(prefabBackpack);
+			backpack.name = "Backpack";
+			GameObjectManager.dontDestroyOnLoadAndRebind(backpack.gameObject);
+
+		}
+		else{
+			backpack = GameObject.Find("Backpack").GetComponent<Backpack>();
+		}
+		
+		backpack.available_slots = new List<(string, int)>();
+
 		if (!GameObject.Find("GameData"))
 		{
 			gameData = UnityEngine.Object.Instantiate(prefabGameData);
 			gameData.name = "GameData";
 			GameObjectManager.dontDestroyOnLoadAndRebind(gameData.gameObject);
+
 		}
 		else
 		{
@@ -84,6 +102,21 @@ public class TitleScreenSystem : FSystem {
 			MainLoop.instance.StartCoroutine(GetScenarioWebRequest());
 			MainLoop.instance.StartCoroutine(GetLevelsWebRequest());
 			GameObjectManager.setGameObjectState(quitButton, false);
+		}
+		// added by zoe
+		if(gameData.scenarioName != ""){
+			updateScenarioList();
+			// GameObjectManager.setGameObjectState(campagneMenu, true); //
+			GameObjectManager.setGameObjectState(listOfLevels, true);
+			showLevels(gameData.scenarioName);
+			GameObjectManager.setGameObjectState(MainMenu, false);
+			GameObjectManager.setGameObjectState(Title, false);
+
+
+			// showLevels(gameData.scenarioName);
+			// showLevels(Path.GetFileName(gameData.scenarioName));
+
+			//charger les bons niveaux
 		}
 	}
 
@@ -263,6 +296,8 @@ public class TitleScreenSystem : FSystem {
 			GameObjectManager.unbind(child.gameObject);
 			GameObject.Destroy(child.gameObject);
         }
+
+		campaignName.GetComponent<TextMeshProUGUI>().text = Path.GetFileNameWithoutExtension(campaignKey);
 
 		// create level buttons for this campaign
 		for (int i = 0; i < defaultCampaigns[campaignKey].Count; i++)

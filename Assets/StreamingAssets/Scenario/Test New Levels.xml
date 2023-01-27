@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<scenario>
+    <level name = "Levels/TestLevels/Niveau01.xml" />
+    <level name = "Levels/TestLevels/Niveau02.xml" />
+</scenario>
