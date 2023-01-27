@@ -120,6 +120,9 @@ public class LevelGenerator : FSystem {
 				case "console":
 					readXMLConsole(child);
 					break;
+				case "printer":
+					readXMLPrinter(child);
+					break;
 				case "door":
 					createDoor(int.Parse(child.Attributes.GetNamedItem("posX").Value), int.Parse(child.Attributes.GetNamedItem("posY").Value),
 					(Direction.Dir)int.Parse(child.Attributes.GetNamedItem("direction").Value), int.Parse(child.Attributes.GetNamedItem("slotId").Value));
@@ -329,6 +332,31 @@ public class LevelGenerator : FSystem {
 		GameObjectManager.bind(activable);
 	}
 
+	private void create3DPrinter(int state, int gridX, int gridY, List<int> slotIDs, Direction.Dir orientation){
+		GameObject printer = Object.Instantiate<GameObject>(Resources.Load("Prefabs/Printer_Prefab") as GameObject, gameData.LevelGO.transform.position + new Vector3(gridY * 3, 3, gridX * 3), Quaternion.Euler(0, 0, 0), gameData.LevelGO.transform);
+
+		// printer.GetComponent<Activable>().slotID = slotIDs;
+		// DoorPath path = printer.GetComponentInChildren<DoorPath>();
+		// if (slotIDs.Count > 0)
+		// 	path.slotId = slotIDs[0];
+		// else
+		// 	path.slotId = -1;
+		printer.GetComponent<Position>().x = gridX;
+		printer.GetComponent<Position>().y = gridY;
+		printer.GetComponent<Direction>().direction = orientation;
+		if (state == 1)
+			printer.AddComponent<TurnedOn>();
+		GameObjectManager.bind(printer);
+	
+	}
+
+	private void createNote(string text, int gridX, int gridY){
+		GameObject note = Object.Instantiate<GameObject>(Resources.Load("Prefabs/Clipboard") as GameObject, gameData.LevelGO.transform.position + new Vector3(gridY * 3, 3, gridX * 3), Quaternion.Euler(0, 0, 0), gameData.LevelGO.transform);
+	
+		note.GetComponent<Position>().x = gridX;
+		note.GetComponent<Position>().y = gridY;
+	}
+
 	private void createSpawnExit(int gridX, int gridY, bool type){
 		GameObject spawnExit;
 		if(type)
@@ -490,6 +518,17 @@ public class LevelGenerator : FSystem {
 		}
 
 		createConsole(int.Parse(activableNode.Attributes.GetNamedItem("state").Value), int.Parse(activableNode.Attributes.GetNamedItem("posX").Value), int.Parse(activableNode.Attributes.GetNamedItem("posY").Value),
+		 slotsID, (Direction.Dir)int.Parse(activableNode.Attributes.GetNamedItem("direction").Value));
+	}
+	
+	private void readXMLPrinter(XmlNode activableNode){
+		List<int> slotsID = new List<int>();
+
+		foreach(XmlNode child in activableNode.ChildNodes){
+			slotsID.Add(int.Parse(child.Attributes.GetNamedItem("slotId").Value));
+		}
+
+		create3DPrinter(int.Parse(activableNode.Attributes.GetNamedItem("state").Value), int.Parse(activableNode.Attributes.GetNamedItem("posX").Value), int.Parse(activableNode.Attributes.GetNamedItem("posY").Value),
 		 slotsID, (Direction.Dir)int.Parse(activableNode.Attributes.GetNamedItem("direction").Value));
 	}
 
