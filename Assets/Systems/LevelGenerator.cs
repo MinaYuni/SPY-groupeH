@@ -125,7 +125,11 @@ public class LevelGenerator : FSystem {
 					break;
 				case "door":
 					createDoor(int.Parse(child.Attributes.GetNamedItem("posX").Value), int.Parse(child.Attributes.GetNamedItem("posY").Value),
-					(Direction.Dir)int.Parse(child.Attributes.GetNamedItem("direction").Value), int.Parse(child.Attributes.GetNamedItem("slotId").Value));
+					(Direction.Dir)int.Parse(child.Attributes.GetNamedItem("direction").Value), int.Parse(child.Attributes.GetNamedItem("slotId").Value), false);
+					break;
+				case "lockedDoor":
+					createDoor(int.Parse(child.Attributes.GetNamedItem("posX").Value), int.Parse(child.Attributes.GetNamedItem("posY").Value),
+					(Direction.Dir)int.Parse(child.Attributes.GetNamedItem("direction").Value), int.Parse(child.Attributes.GetNamedItem("slotId").Value), true);
 					break;
 				case "triggers":
 					readXMLTriggers(child);
@@ -294,9 +298,15 @@ public class LevelGenerator : FSystem {
 		return entity;
 	}
 
-	private void createDoor(int gridX, int gridY, Direction.Dir orientation, int slotID){
-		GameObject door = Object.Instantiate<GameObject>(Resources.Load ("Prefabs/Door") as GameObject, gameData.LevelGO.transform.position + new Vector3(gridY*3,3,gridX*3), Quaternion.Euler(0,0,0), gameData.LevelGO.transform);
+	private void createDoor(int gridX, int gridY, Direction.Dir orientation, int slotID, bool locked){
+		
+		GameObject door;
 
+		if (locked){
+			door = Object.Instantiate<GameObject>(Resources.Load ("Prefabs/LockedDoor") as GameObject, gameData.LevelGO.transform.position + new Vector3(gridY*3,3,gridX*3), Quaternion.Euler(0,0,0), gameData.LevelGO.transform);
+		} else {
+			door = Object.Instantiate<GameObject>(Resources.Load ("Prefabs/Door") as GameObject, gameData.LevelGO.transform.position + new Vector3(gridY*3,3,gridX*3), Quaternion.Euler(0,0,0), gameData.LevelGO.transform);
+		}
 		door.GetComponentInChildren<ActivationSlot>().slotID = slotID;
 		door.GetComponentInChildren<Position>().x = gridX;
 		door.GetComponentInChildren<Position>().y = gridY;

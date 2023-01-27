@@ -15,6 +15,7 @@ TagManager:
   - Door
   - ResetButton
   - RemoveButton
+  - LockedDoor
   layers:
   - Default
   - TransparentFX

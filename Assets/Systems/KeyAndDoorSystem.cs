@@ -5,7 +5,7 @@ public class KeyAndDoorSystem : FSystem {
 
 	private GameData gameData = FamilyManager.getFamily(new AllOfComponents(typeof(GameData))).First().GetComponent<GameData>();
 	private Family f_players = FamilyManager.getFamily(new AnyOfTags("Player"));
-	private Family f_door = FamilyManager.getFamily(new AnyOfTags("Door"));
+	private Family f_door = FamilyManager.getFamily(new AnyOfTags("LockedDoor"));
 	private Family f_backpack = FamilyManager.getFamily(new AllOfComponents(typeof(Backpack)));
 
 	public static KeyAndDoorSystem instance;
