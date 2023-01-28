@@ -31,7 +31,7 @@ public class TriggerSystem : FSystem {
 		// curr_pos = (0,0,0);
 
 
-	}
+	} 
 
 	// Use to process your families.
 	protected override void onProcess(int familiesUpdateCount) {
