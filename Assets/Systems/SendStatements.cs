@@ -6,7 +6,8 @@ using System.IO;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-public class SendStatements : FSystem {
+public class SendStatements : FSystem
+{
 
     private Family f_actionForLRS = FamilyManager.getFamily(new AllOfComponents(typeof(ActionPerformedForLRS)));
 
@@ -16,10 +17,10 @@ public class SendStatements : FSystem {
     {
         instance = this;
     }
-	
-	protected override void onStart()
+
+    protected override void onStart()
     {
-		initGBLXAPI();
+        initGBLXAPI();
     }
 
     public void initGBLXAPI()
@@ -35,8 +36,9 @@ public class SendStatements : FSystem {
         GBL_Interface.userUUID = GBL_Interface.playerName;
     }
 
-	// Use to process your families.
-	protected override void onProcess(int familiesUpdateCount) {
+    // Use to process your families.
+    protected override void onProcess(int familiesUpdateCount)
+    {
         // Do not use callbacks because in case in the same frame actions are removed on a GO and another component is added in another system, family will not trigger again callback because component will not be processed
         foreach (GameObject go in f_actionForLRS)
         {
@@ -76,7 +78,7 @@ public class SendStatements : FSystem {
                 GameObjectManager.removeComponent(listAP[i]);
             }
         }
-	}
+    }
 
     public void testSendStatement()
     {

@@ -1,6 +1,16 @@
 {
     "action": {},
-    "activity": {},
+    "activity": {
+        "instructions": {
+            "description": {
+                "en-US": "the briefing panel (instructions)"
+            },
+            "id": "https://www.lip6.fr/mocah/invaliduri/activity-types/briefing",
+            "name": {
+                "en-US": "instructions"
+            }
+        }
+    },
     "content": {},
     "direction": {},
     "domain": {},
@@ -16,5 +26,15 @@
     "topic": {},
     "type": {},
     "value": {},
-    "verb": {}
+    "verb": {
+        "opened": {
+            "description": {
+                "en-US": "indicates that the actor opens briefing dialogs (instructions)"
+            },
+            "id": "https://www.lip6.fr/mocah/invaliduri/verbs/openned",
+            "name": {
+                "en-US": "opened"
+            }
+        }
+    }
 }
