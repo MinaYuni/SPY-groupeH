@@ -10,14 +10,4 @@ public class TriggerSystem_wrapper : BaseWrapper
 		MainLoop.initAppropriateSystemField (system, "dialogPanel", dialogPanel);
 	}
 
-	public void setActiveOKButton(System.Boolean active)
-	{
-		MainLoop.callAppropriateSystemMethod (system, "setActiveOKButton", active);
-	}
-
-	public void closeDialogPanel()
-	{
-		MainLoop.callAppropriateSystemMethod (system, "closeDialogPanel", null);
-	}
-
 }

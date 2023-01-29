@@ -19,6 +19,11 @@ public class DialogSystem_wrapper : BaseWrapper
 		MainLoop.callAppropriateSystemMethod (system, "showDialogPanel", null);
 	}
 
+	public void showPopup()
+	{
+		MainLoop.callAppropriateSystemMethod (system, "showPopup", null);
+	}
+
 	public void nextDialog()
 	{
 		MainLoop.callAppropriateSystemMethod (system, "nextDialog", null);
