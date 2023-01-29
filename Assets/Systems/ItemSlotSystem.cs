@@ -7,7 +7,7 @@ public class ItemSlotSystem : FSystem {
     public static ItemSlotSystem instance;
     private Family f_backpack = FamilyManager.getFamily(new AllOfComponents(typeof(Backpack)));
     private Family f_items = FamilyManager.getFamily(new AllOfComponents(typeof(Item)));
-    private GameData gameData = FamilyManager.getFamily(new AllOfComponents(typeof(GameData))).First().GetComponent<GameData>();
+    // private GameData gameData = FamilyManager.getFamily(new AllOfComponents(typeof(GameData))).First().GetComponent<GameData>();
     // private Family itemSlot = FamilyManager.getFamily(new AllOfComponents(typeof(ItemSlot)));
 	
     public GameObject backpackPanel;
