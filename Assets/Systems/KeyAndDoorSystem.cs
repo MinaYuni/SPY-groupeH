@@ -25,22 +25,20 @@ public class KeyAndDoorSystem : FSystem {
 		foreach(GameObject door in f_door){
 
 			var slot_id = door.GetComponent<ActivationSlot>().slotID;
-			var door_posX = door.GetComponent<Position>().x;
-			var door_posY = door.GetComponent<Position>().y;
+			var door_pos = door.GetComponent<Position>();
 			var door_orientation = (int)door.GetComponent<Direction>().direction;
 
 			foreach(GameObject player in f_players){	
 				var pos = player.GetComponent<Position>();
 				var direction = (int)player.GetComponent<Direction>().direction;
 
-				bool faced = playerFacesDoor(direction, pos.x, pos.y, door_orientation, door_posX, door_posY);
+				bool faced = playerFacesDoor(direction, pos.x, pos.y, door_orientation, door_pos.x, door_pos.y);
 
 				if(faced){
 					var backp = f_backpack.First().GetComponent<Backpack>().available_slots;
 					foreach(var item in backp){
 						if(item.Item1 == "key" && item.Item2 == slot_id){
 							closeDoor(door);
-					
 						}
 					}
 				}
