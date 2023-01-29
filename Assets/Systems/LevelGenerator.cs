@@ -141,6 +141,7 @@ public class LevelGenerator : FSystem {
 					createNote(child.Attributes.GetNamedItem("text").Value, int.Parse(child.Attributes.GetNamedItem("posX").Value), int.Parse(child.Attributes.GetNamedItem("posY").Value));
 					break;
 				case "player":
+				case "remoteControlledPlayer":
 				case "enemy":
 					string nameAgentByUser = "";
 					XmlNode agentName = child.Attributes.GetNamedItem("associatedScriptName");
@@ -246,6 +247,9 @@ public class LevelGenerator : FSystem {
 				break;
 			case "enemy": // Enemy
 				entity = Object.Instantiate<GameObject>(Resources.Load ("Prefabs/Drone") as GameObject, gameData.LevelGO.transform.position + new Vector3(gridY*3,5f,gridX*3), Quaternion.Euler(0,0,0), gameData.LevelGO.transform);
+				break;
+			case "remoteControlledPlayer":
+				entity = Object.Instantiate<GameObject>(Resources.Load ("Prefabs/RoboSphere") as GameObject, gameData.LevelGO.transform.position + new Vector3(gridY*3,5f,gridX*3), Quaternion.Euler(0,0,0), gameData.LevelGO.transform);
 				break;
 		}
 
