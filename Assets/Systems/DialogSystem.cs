@@ -225,6 +225,7 @@ public class DialogSystem : FSystem
         } else { // Popup
             GameObject inputGO = dialogPanel.transform.Find("InputField").gameObject;
             gameData.popupInputText = inputGO.GetComponent<TMP_InputField>().text;
+            inputGO.GetComponent<TMP_InputField>().text = null;
             gameData.popup = null;
         }
     }
