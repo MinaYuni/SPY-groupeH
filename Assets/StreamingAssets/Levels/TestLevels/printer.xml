@@ -159,6 +159,9 @@
     <trigger robot_posY="3" robot_posX="2" robot_direction="0" trigger_id="trigger_printer" popup="Je suis une imprimante 3D. Quelle clé veux-tu imprimer ?" popup_title="Imprimante 3D" />
   </triggers>
   <note text="" posY="4" posX="3" />
-  <coin posY="8" posX="6" />
+<!--  <coin posY="8" posX="6" />-->
+  <items>
+    <item item_posX="6" item_posY="8" item_name="puzzle1" item_id="0"/>
+  </items>
   <script name="Alan" editMode="2" type="0" />
 </level>

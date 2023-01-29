@@ -42,9 +42,12 @@ public class ItemCollectSystem : FSystem {
 				
 				string name = gameData.items[key].Item1;
 				Debug.Log("name : " + name);
-				GameObject itemToHide = level.transform.Find(name+"(Clone)").gameObject;
-			
-				itemToHide.SetActive(false);
+				if (level.transform.Find(name + "(Clone)").gameObject != null)
+				{
+					GameObject itemToHide = level.transform.Find(name + "(Clone)").gameObject;
+
+					itemToHide.SetActive(false);
+				}
 
 				gameData.items.Remove(key); // item has been picked up
 
