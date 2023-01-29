@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 431504094526762179}
-  - component: {fileID: 431504094526762188}
+  - component: {fileID: 6777599736707661824}
   m_Layer: 0
   m_Name: Backpack
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &431504094526762188
+--- !u!114 &6777599736707661824
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d69f62855c8ff14e80b7f33c98d219c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  available_slots: []
+  _keys: []
+  _values: []

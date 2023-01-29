@@ -29,7 +29,7 @@ public class TriggerSystem : FSystem {
 		GameObjectManager.setGameObjectState(dialogPanel.transform.parent.gameObject, false);
 		GameObjectManager.setGameObjectState(inputPanel.transform.parent.gameObject, false);
 		popped = false;
-	}
+	} 
 
 	// Use to process your families.
 	protected override void onProcess(int familiesUpdateCount) {

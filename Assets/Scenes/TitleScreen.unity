@@ -14823,7 +14823,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 150
   m_fontSizeBase: 150
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -16375,6 +16375,8 @@ GameObject:
   - component: {fileID: 1645587990}
   - component: {fileID: 1645587991}
   - component: {fileID: 1645587992}
+  - component: {fileID: 1645587993}
+  - component: {fileID: 1645587994}
   m_Layer: 0
   m_Name: Main_Loop
   m_TagString: Untagged
@@ -16396,7 +16398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabGameData: {fileID: 3833649377614804033, guid: 0c781d4c9bf00bb48ad0e4df8f089e03,
     type: 3}
-  prefabBackpack: {fileID: 431504094526762188, guid: 4708950869077b447b8de3de2b039784,
+  prefabBackpack: {fileID: 6777599736707661824, guid: 4708950869077b447b8de3de2b039784,
     type: 3}
   mainCanvas: {fileID: 350375277}
   MainMenu: {fileID: 1667186165}
@@ -16454,6 +16456,10 @@ MonoBehaviour:
   - _typeAssemblyQualifiedName: SettingsManager, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     _typeFullName: SettingsManager
+    _pause: 0
+  - _typeAssemblyQualifiedName: SendStatements, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    _typeFullName: SendStatements
     _pause: 0
   _lateUpdateSystemDescriptions: []
   _forceUpdateInspector: 0
@@ -16554,6 +16560,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingsPanel: {fileID: 1575353410250596000}
   canvasScaler: {fileID: 350375279}
+--- !u!114 &1645587993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645587984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71df5f373a1f9cf458b84bddc2690933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1645587994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645587984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891cf297933c6714a9440dcf3b837b23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1649896675
 GameObject:
   m_ObjectHideFlags: 0
