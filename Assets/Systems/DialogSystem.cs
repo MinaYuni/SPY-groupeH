@@ -54,8 +54,11 @@ public class DialogSystem : FSystem
     protected override void onProcess(int familiesUpdateCount)
     {
         //Activate DialogPanel if there is a message
-        if (gameData != null && nDialog < gameData.dialogMessage.Count && !dialogPanel.transform.parent.gameObject.activeSelf)
+        if (gameData != null && nDialog < gameData.dialogMessage.Count && !dialogPanel.transform.parent.gameObject.activeSelf){
             showDialogPanel();
+        } else if (gameData != null && gameData.popup != null){
+        	showPopup();
+        }
     }
 
 
@@ -73,6 +76,12 @@ public class DialogSystem : FSystem
         });
 
         configureDialog();
+    }
+
+    public void showPopup(){
+    	
+    	GameObjectManager.setGameObjectState(dialogPanel.transform.parent.gameObject, true);
+        configurePopup();
     }
 
     // See NextButton in editor
@@ -112,10 +121,10 @@ public class DialogSystem : FSystem
             if (Application.platform == RuntimePlatform.WebGLPlayer)
             {
                 Uri uri = new Uri(gameData.levelToLoad);
-                setImageSprite(imageGO.GetComponent<Image>(), uri.AbsoluteUri.Remove(uri.AbsoluteUri.Length - uri.Segments[uri.Segments.Length - 1].Length) + "Images/" + gameData.dialogMessage[nDialog].Item2);
+                setImageSprite(imageGO.GetComponent<Image>(), gameData.dialogMessage[nDialog].Item3, uri.AbsoluteUri.Remove(uri.AbsoluteUri.Length - uri.Segments[uri.Segments.Length - 1].Length) + "Images/" + gameData.dialogMessage[nDialog].Item2);
             }
             else
-                setImageSprite(imageGO.GetComponent<Image>(), Path.GetDirectoryName(gameData.levelToLoad) + "/Images/" + gameData.dialogMessage[nDialog].Item2);
+                setImageSprite(imageGO.GetComponent<Image>(), gameData.dialogMessage[nDialog].Item3, Path.GetDirectoryName(gameData.levelToLoad) + "/Images/" + gameData.dialogMessage[nDialog].Item2);
         }
         else
             GameObjectManager.setGameObjectState(imageGO, false);
@@ -136,6 +145,53 @@ public class DialogSystem : FSystem
             setActivePrevButton(true);
         if (nDialog + 1 >= gameData.dialogMessage.Count)
             setActiveOKButton(true);
+    }
+
+    private void configurePopup(){
+        
+    	string popupText = gameData.popup[0].Item1;
+    	string imageName = gameData.popup[0].Item2;
+    	float imageHeight  = gameData.popup[0].Item3;
+    	int camX = gameData.popup[0].Item4;
+    	int camY = gameData.popup[0].Item5;
+    	bool hasInput = gameData.popup[0].Item6;
+
+    	// Set text
+		GameObject textGO = dialogPanel.transform.Find("Text").gameObject;
+		GameObjectManager.setGameObjectState(textGO, true);
+		textGO.GetComponent<TextMeshProUGUI>().text = popupText;
+
+		// Set image
+        GameObject imageGO = dialogPanel.transform.Find("Image").gameObject;
+        if (imageName != null){
+            if (Application.platform == RuntimePlatform.WebGLPlayer){
+                Uri uri = new Uri(gameData.levelToLoad);
+                setImageSprite(imageGO.GetComponent<Image>(), imageHeight, uri.AbsoluteUri.Remove(uri.AbsoluteUri.Length - uri.Segments[uri.Segments.Length - 1].Length) + "Images/" + imageName);
+            } else {
+                setImageSprite(imageGO.GetComponent<Image>(), imageHeight, Path.GetDirectoryName(gameData.levelToLoad) + "/Images/" + imageName);
+            }
+        } else {
+            GameObjectManager.setGameObjectState(imageGO, false);
+        }
+
+		// Set input field
+		GameObject inputGO = dialogPanel.transform.Find("InputField").gameObject;
+		if (hasInput){
+			GameObjectManager.setGameObjectState(inputGO, true);
+		} else {
+			GameObjectManager.setGameObjectState(inputGO, false);
+		}
+
+		// Set camera pos
+        if (camX != -1 && camY != -1){
+            GameObjectManager.addComponent<FocusCamOn>(MainLoop.instance.gameObject, new { camX = camX, camY = camY });
+        }
+
+		LayoutRebuilder.ForceRebuildLayoutImmediate(textGO.transform as RectTransform);
+
+		setActiveOKButton(true);
+		setActiveNextButton(false);
+    	setActivePrevButton(false);
     }
 
 
@@ -159,21 +215,26 @@ public class DialogSystem : FSystem
         dialogPanel.transform.Find("Buttons").Find("PrevButton").gameObject.GetComponent<Button>().interactable = active;
     }
 
-
     // See OKButton in editor
     // Désactive le panel de dialogue
     public void closeDialogPanel()
     {
         GameObjectManager.setGameObjectState(dialogPanel.transform.parent.gameObject, false);
-        nDialog = gameData.dialogMessage.Count;
+        if (gameData.popup == null){ // Level dialog
+            nDialog = gameData.dialogMessage.Count;
+        } else { // Popup
+            GameObject inputGO = dialogPanel.transform.Find("InputField").gameObject;
+            gameData.popupInputText = inputGO.GetComponent<TMP_InputField>().text;
+            gameData.popup = null;
+        }
     }
 
     // Affiche l'image associée au dialogue
-    public void setImageSprite(Image img, string path)
+    public void setImageSprite(Image img, float imageHeight, string path)
     {
         if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
-            MainLoop.instance.StartCoroutine(GetTextureWebRequest(img, path));
+            MainLoop.instance.StartCoroutine(GetTextureWebRequest(img, imageHeight, path));
         }
         else
         {
@@ -184,7 +245,7 @@ public class DialogSystem : FSystem
                 if (tex2D.LoadImage(fileData))
                 {
                     img.sprite = Sprite.Create(tex2D, new Rect(0, 0, tex2D.width, tex2D.height), new Vector2(0, 0), 100.0f);
-                    MainLoop.instance.StartCoroutine(setWantedHeight(img));
+                    MainLoop.instance.StartCoroutine(setWantedHeight(img, imageHeight));
                 }
             }
             catch (Exception e)
@@ -194,7 +255,7 @@ public class DialogSystem : FSystem
         }
     }
 
-    private IEnumerator GetTextureWebRequest(Image img, string path)
+    private IEnumerator GetTextureWebRequest(Image img, float imageHeight, string path)
     {
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(path);
         yield return www.SendWebRequest();
@@ -207,17 +268,17 @@ public class DialogSystem : FSystem
         {
             Texture2D tex2D = ((DownloadHandlerTexture)www.downloadHandler).texture;
             img.sprite = Sprite.Create(tex2D, new Rect(0, 0, tex2D.width, tex2D.height), new Vector2(0, 0), 100.0f);
-            MainLoop.instance.StartCoroutine(setWantedHeight(img));
+            MainLoop.instance.StartCoroutine(setWantedHeight(img, imageHeight));
         }
     }
 
-    private IEnumerator setWantedHeight(Image img)
+    private IEnumerator setWantedHeight(Image img, float imageHeight)
     {
         img.gameObject.SetActive(false); // Force disabling image to compute panel height with only buttons and text
         yield return new WaitForSeconds(0.1f); // take time to update UI
         RectTransform rectParent = (RectTransform)img.transform.parent;
         float maxHeight = Screen.height - (rectParent.sizeDelta.y + rectParent.anchoredPosition.y * 2); // compute available space
-        if (gameData.dialogMessage[nDialog].Item3 != -1)
+        if (imageHeight != -1)
             ((RectTransform)img.transform).sizeDelta = new Vector2(((RectTransform)img.transform).sizeDelta.x, Math.Min(gameData.dialogMessage[nDialog].Item3, maxHeight));
         else
             ((RectTransform)img.transform).sizeDelta = new Vector2(((RectTransform)img.transform).sizeDelta.x, Math.Min(img.GetComponent<LayoutElement>().preferredHeight, maxHeight));

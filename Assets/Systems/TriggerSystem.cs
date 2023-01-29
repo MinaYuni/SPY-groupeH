@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine.UI;
 using System.IO;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Networking;
 using System;
 
@@ -17,8 +18,9 @@ public class TriggerSystem : FSystem {
 	private Family f_triggerables = FamilyManager.getFamily(new AllOfComponents(typeof(PopupTriggerable)));
 
 	public GameObject dialogPanel;
-	public GameObject inputPanel;
 	private bool popped;
+
+	private GameData gameData;
 
 	public TriggerSystem(){
 		instance = this;
@@ -26,8 +28,13 @@ public class TriggerSystem : FSystem {
 	
 	// Use to init system before the first onProcess call
 	protected override void onStart(){
+
+		GameObject go = GameObject.Find("GameData");
+        if (go != null){
+            gameData = go.GetComponent<GameData>();
+        }
+
 		GameObjectManager.setGameObjectState(dialogPanel.transform.parent.gameObject, false);
-		GameObjectManager.setGameObjectState(inputPanel.transform.parent.gameObject, false);
 		popped = false;
 	} 
 
@@ -58,17 +65,24 @@ public class TriggerSystem : FSystem {
 						break;
 				}
 
+				// TODO: fix this part so that it can be generic (everything is currently hardcoded for one situation)
 				if (triggered){
 					switch (triggerable.GetComponent<PopupTriggerable>().popupType){
 						case PopupTriggerable.PopupType.Printer:
-							popped = trigger3DPrinter(triggerable);
+							if (!popped){
+								configurePopup("Je suis une imprimante 3D. Entrez le code pour la clé que vous souhaitez imprimer.", null, -1, -1, -1, true);
+							} else if (gameData.popupInputText == "8462") {
+								popped = false;
+								configurePopup("Voici votre nouvelle clé. Elle ouvre la porte 01.", "key.png", -1, -1, -1, false);
+								gameData.items.Add((triggerablePos.x, triggerablePos.y), ("key", 01));
+								gameData.popupInputText = null;
+							}
 							break;
 						case PopupTriggerable.PopupType.LockedDoor:
-							popped = triggerLockedDoor(triggerable);
+							triggerLockedDoor(triggerable);
 							break;
 						case PopupTriggerable.PopupType.Note:
-							configureDialog("Il semblerait que quelqu'un a oublié ça ici...");
-							popped = true;
+							configurePopup("Il semblerait que quelqu'un a oublié ça ici... C'est écrit : 'Code porte: 8462'", null, -1, -1, -1, false);
 							break;
 					}
 				}
@@ -76,6 +90,7 @@ public class TriggerSystem : FSystem {
 		}
 	}
 
+	/* Checks whether the robot is facing the triggerable.  */
 	private bool playerFacesTriggerable(int robot_ori, int robot_posX, int robot_posY, int triggerable_ori, int triggerable_posX, int triggerable_posY){
 		
 		if (triggerable_ori == 0 || triggerable_ori == 1){
@@ -96,6 +111,7 @@ public class TriggerSystem : FSystem {
 		return false;
 	}
 
+	/* Checks whether the robot is in the same cell as the triggerable. */
 	private bool playerOnTriggerable(int robot_posX, int robot_posY, int triggerable_posX, int triggerable_posY){
 		
 		if (robot_posX == triggerable_posX && robot_posY == triggerable_posY){
@@ -105,49 +121,12 @@ public class TriggerSystem : FSystem {
 		return false;
 	}
 
-	private void configureDialog(string popup){
-		// set text
-		if (popped == false){
-			GameObjectManager.setGameObjectState(dialogPanel.transform.parent.gameObject, true);
-			GameObject textGO = dialogPanel.transform.Find("Text").gameObject;
-			// if (gameData.triggerMessage[nDialog].Item1 != null)
-			// {
-			GameObjectManager.setGameObjectState(textGO, true);
-			textGO.GetComponent<TextMeshProUGUI>().text = popup;
-			LayoutRebuilder.ForceRebuildLayoutImmediate(textGO.transform as RectTransform);
-			// }
-			// else
-			// 	GameObjectManager.setGameObjectState(textGO, false);
-			
-			// set camera pos
-			// if (gameData.dialogMessage[nDialog].Item4 != -1 && gameData.dialogMessage[nDialog].Item5 != -1)
-			// {
-			// 	GameObjectManager.addComponent<FocusCamOn>(MainLoop.instance.gameObject, new { camX = gameData.dialogMessage[nDialog].Item4, camY = gameData.dialogMessage[nDialog].Item5 });
-			// }
-			setActiveOKButton(true);
-		}
+	private void configurePopup(string popupText, string imageName, float imageHeight, int camX, int camY, bool input){
 
-	}
-
-	public void setActiveOKButton(bool active){
-		GameObjectManager.setGameObjectState(dialogPanel.transform.Find("Buttons").Find("OKButton").gameObject, active);
-	}
-
-	public void closeDialogPanel(){
-		GameObjectManager.setGameObjectState(dialogPanel.transform.parent.gameObject, false);
-	}
-
-	private bool trigger3DPrinter(GameObject printer){
-		
-		configureDialog("Je suis une imprimante 3D. Quelle clé veux-tu imprimer ?");
-		
-		GameObjectManager.setGameObjectState(inputPanel.transform.parent.gameObject, true);
-		GameObject inputGO = inputPanel.transform.Find("TMP_InputField").gameObject;
-		//Debug.Log("test: "+inputGO.ToString());
-		GameObjectManager.setGameObjectState(inputGO, true);
-		//inputGO.GetComponent<TMP_InputField>().text
-		LayoutRebuilder.ForceRebuildLayoutImmediate(inputGO.transform as RectTransform);
-		return true;
+		if (!popped){
+			gameData.popup = new List<(string, string, float, int, int, bool)>(1){(popupText, imageName, imageHeight, camX, camY, input)};
+			popped = true;
+		} 
 	}
 
 	/* Triggers popup if the door is locked door and the robot doesn't have the key.  */
@@ -166,8 +145,8 @@ public class TriggerSystem : FSystem {
 			}
 		}
 
-		configureDialog("HEY ! Tu n'as pas la clé pour ouvrir cette porte.");
-		return false;
+		configurePopup("HEY ! Tu n'as pas la clé pour ouvrir cette porte.", null, -1, -1, -1, false);
+		return true;
 	}
 
 }
