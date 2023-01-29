@@ -137,6 +137,9 @@ public class LevelGenerator : FSystem {
 				case "items":
 					readXMLItems(child);
 					break;
+				case "note":
+					createNote(child.Attributes.GetNamedItem("text").Value, int.Parse(child.Attributes.GetNamedItem("posX").Value), int.Parse(child.Attributes.GetNamedItem("posY").Value));
+					break;
 				case "player":
 				case "enemy":
 					string nameAgentByUser = "";
@@ -365,6 +368,8 @@ public class LevelGenerator : FSystem {
 	
 		note.GetComponent<Position>().x = gridX;
 		note.GetComponent<Position>().y = gridY;
+
+		GameObjectManager.bind(note);
 	}
 
 	private void createSpawnExit(int gridX, int gridY, bool type){

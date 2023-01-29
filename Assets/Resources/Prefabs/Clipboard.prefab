@@ -94,6 +94,8 @@ GameObject:
   - component: {fileID: 4795266759639050}
   - component: {fileID: 95092961394454540}
   - component: {fileID: 2604634332068822299}
+  - component: {fileID: 6994049536489332934}
+  - component: {fileID: 1805137244682805777}
   m_Layer: 8
   m_Name: Clipboard
   m_TagString: Untagged
@@ -110,7 +112,7 @@ Transform:
   m_GameObject: {fileID: 1685343955664076}
   m_LocalRotation: {x: 0.08632959, y: -0.7404348, z: 0.65902317, w: 0.099960014}
   m_LocalPosition: {x: 0.466, y: 1.122, z: -1.351}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4706570796905144}
@@ -152,6 +154,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 0
+--- !u!114 &6994049536489332934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685343955664076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd38486b38fcf7e40938b677092cf4ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popupType: 2
+  triggerLocation: 1
+--- !u!114 &1805137244682805777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685343955664076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd91ca889014ff24e977cc1e719248cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 0
 --- !u!1 &1954106281014710
 GameObject:
   m_ObjectHideFlags: 0

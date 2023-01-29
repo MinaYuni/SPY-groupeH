@@ -152,13 +152,13 @@
   <printer state="1" posY="3" posX="2" direction="1">
     <slot slotId="0" />
   </printer>
-  <lockedDoor posY="5" posX="5" direction="3" slotId="0" />
+  <lockedDoor posY="5" posX="5" direction="3" slotId="1" />
   <player associatedScriptName="Alan" posY="7" posX="1" direction="2" />
   <triggers>
     <trigger robot_posY="5" robot_posX="4" robot_direction="2" door_id="0" door_posX="5" door_posY="5" popup="HEY ! Tu n'as pas la clé pour ouvrir cette porte." popup_title="Porte 07" />
     <trigger robot_posY="3" robot_posX="2" robot_direction="0" trigger_id="trigger_printer" popup="Je suis une imprimante 3D. Quelle clé veux-tu imprimer ?" popup_title="Imprimante 3D" />
   </triggers>
+  <note text="" posY="4" posX="3" />
   <coin posY="8" posX="6" />
-  <coin posY="4" posX="3" />
   <script name="Alan" editMode="2" type="0" />
 </level>
