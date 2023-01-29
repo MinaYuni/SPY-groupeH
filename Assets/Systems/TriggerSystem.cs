@@ -82,6 +82,7 @@ public class TriggerSystem : FSystem {
 							} else if (gameData.popupInputText == "8462") {
 								configurePopup("Voici votre nouvelle clé. Elle ouvre la porte 01.", "key.png", -1, -1, -1, false);
 								gameData.items.Add((triggerablePos.x, triggerablePos.y), ("key", 01));
+								GameObject key = UnityEngine.Object.Instantiate<GameObject>(Resources.Load("Prefabs/rust_key") as GameObject, gameData.LevelGO.transform.position + new Vector3(triggerablePos.y * 3, 3, triggerablePos.x * 3), Quaternion.Euler(90, 0, 0), gameData.LevelGO.transform);
 								gameData.popupInputText = null;
 							}
 							break;
