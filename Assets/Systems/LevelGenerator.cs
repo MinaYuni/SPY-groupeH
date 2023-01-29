@@ -61,7 +61,13 @@ public class LevelGenerator : FSystem {
 			levelName.text = Path.GetFileNameWithoutExtension(gameData.levelToLoad);
 			if (Application.platform == RuntimePlatform.WebGLPlayer)
 				HideHtmlButtons();
-		}
+
+            GameObjectManager.addComponent<ActionPerformedForLRS>(MainLoop.instance.gameObject, new
+            {
+                verb = "launched",
+                objectType = "level"
+            });
+        }
 		
 	}
 

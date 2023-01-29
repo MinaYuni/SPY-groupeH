@@ -68,8 +68,8 @@ public class DialogSystem : FSystem
         GameObjectManager.setGameObjectState(dialogPanel.transform.parent.gameObject, true);
         nDialog = 0;
 
-        Debug.Log(GBL_Interface.playerName + " asks to send statement...");
-        GameObjectManager.addComponent<ActionPerformedForLRS>(gameData.LevelGO, new
+        //Debug.Log(GBL_Interface.playerName + " asks to send statement...");
+        GameObjectManager.addComponent<ActionPerformedForLRS>(MainLoop.instance.gameObject, new
         {
             verb = "opened",
             objectType = "instructions"
