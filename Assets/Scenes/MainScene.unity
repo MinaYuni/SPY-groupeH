@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4397561, g: 0.4881795, b: 0.5683986, a: 1}
+  m_IndirectSpecularColor: {r: 0.43975607, g: 0.48817956, b: 0.5683989, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2780,7 +2780,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 649317142}
   m_HandleRect: {fileID: 649317141}
   m_Direction: 0
-  m_Value: 0.00000090599053
+  m_Value: 0
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -8323,8 +8323,8 @@ GameObject:
   - component: {fileID: 361349244}
   - component: {fileID: 361349245}
   - component: {fileID: 361349246}
-  - component: {fileID: 361349247}
   - component: {fileID: 361349248}
+  - component: {fileID: 361349247}
   m_Layer: 0
   m_Name: Main_Loop
   m_TagString: Untagged
@@ -8990,7 +8990,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d51ac49365641e49915a8f1d1f8aea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backpackPanel: {fileID: 1420043634}
 --- !u!114 &361349248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8998,11 +8997,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 361349215}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37f3faa0461cba84da61c4abb44ad138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backpackPanel: {fileID: 1420043634}
 --- !u!1 &371440127
 GameObject:
   m_ObjectHideFlags: 0
@@ -13455,8 +13455,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 665381104}
   m_HandleRect: {fileID: 665381103}
   m_Direction: 2
-  m_Value: 0.99944735
-  m_Size: 0.99605477
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -20525,7 +20525,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0000064898964}
+  m_AnchoredPosition: {x: 0, y: 0.0002619189}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &976971666
@@ -35938,8 +35938,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2102614943}
   m_HandleRect: {fileID: 2102614942}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.9999941
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
