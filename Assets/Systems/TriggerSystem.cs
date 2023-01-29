@@ -19,6 +19,8 @@ public class TriggerSystem : FSystem {
 
 	public GameObject dialogPanel;
 	private bool popped;
+	private int lastPosX;
+	private int lastPosY;
 
 	private GameData gameData;
 
@@ -42,9 +44,13 @@ public class TriggerSystem : FSystem {
 	protected override void onProcess(int familiesUpdateCount) {
 
 		foreach (GameObject player in f_players){	
-			
+
 			Position robotPos = player.GetComponent<Position>();
 			int robotDirection = (int) player.GetComponent<Direction>().direction;
+
+			if (popped && (robotPos.x != lastPosX || robotPos.y != lastPosY)){
+				popped = false;
+			}
 
 			foreach (GameObject triggerable in f_triggerables){
 
@@ -67,12 +73,13 @@ public class TriggerSystem : FSystem {
 
 				// TODO: fix this part so that it can be generic (everything is currently hardcoded for one situation)
 				if (triggered){
+
 					switch (triggerable.GetComponent<PopupTriggerable>().popupType){
 						case PopupTriggerable.PopupType.Printer:
-							if (!popped){
+							if (robotPos.x != lastPosX || robotPos.y != lastPosY){
 								configurePopup("Je suis une imprimante 3D. Entrez le code pour la clé que vous souhaitez imprimer.", null, -1, -1, -1, true);
-							} else if (gameData.popupInputText == "8462") {
 								popped = false;
+							} else if (gameData.popupInputText == "8462") {
 								configurePopup("Voici votre nouvelle clé. Elle ouvre la porte 01.", "key.png", -1, -1, -1, false);
 								gameData.items.Add((triggerablePos.x, triggerablePos.y), ("key", 01));
 								gameData.popupInputText = null;
@@ -87,7 +94,12 @@ public class TriggerSystem : FSystem {
 					}
 				}
 			}
+			lastPosX = robotPos.x;
+			lastPosY = robotPos.y;
+			// Careful: last two lines assume we only have one robot
 		}
+
+
 	}
 
 	/* Checks whether the robot is facing the triggerable.  */
@@ -130,23 +142,24 @@ public class TriggerSystem : FSystem {
 	}
 
 	/* Triggers popup if the door is locked door and the robot doesn't have the key.  */
-	private bool triggerLockedDoor(GameObject lockedDoor){
+	private void triggerLockedDoor(GameObject lockedDoor){
 
 		// Nothing to do if door is open
 		if (!lockedDoor.activeSelf) {
-			return false;
+			popped = false;
+			return;
 		}
 		
 		// If door is locked, check backpack for matching key
 		var backp = f_backpack.First().GetComponent<Backpack>().available_slots;
 		foreach (var item in backp){
 			if (item.Item1 == "key" && item.Item2 == lockedDoor.GetComponent<ActivationSlot>().slotID){ // if robot has the key
-				return false; // TODO: see if we open the door here?
+				popped = false; // TODO: see if we open the door here?
+				return;
 			}
 		}
 
 		configurePopup("HEY ! Tu n'as pas la clé pour ouvrir cette porte.", null, -1, -1, -1, false);
-		return true;
 	}
 
 }
