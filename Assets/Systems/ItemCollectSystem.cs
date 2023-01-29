@@ -25,31 +25,48 @@ public class ItemCollectSystem : FSystem {
 // deux component = pos and type/name/id... 
 	// Use to process your families.
 	protected override void onProcess(int familiesUpdateCount) {
+		
 		foreach(var player in f_players){
 
 			var p_pos = player.GetComponent<Position>();
 			var key = (p_pos.x, p_pos.y);
 			// Debug.Log(key + " player pos");
 
-			if(gameData.items.ContainsKey(key)){
+			if(gameData.items.ContainsKey(key))
+			{
+				string name = gameData.items[key];
+				Debug.Log("name : " + name);
+
 				f_backpack.First().GetComponent<Backpack>().available_slots.Add(gameData.items[key]);
+				Debug.Log("item just now added : "+ gameData.items[key]);
 				
 				// Item it = Item();
 				// it.id = gameData.items[key]; 
 				GameObjectManager.addComponent<Item>(backpackPanel, new{id=gameData.items[key]});
+				gameData.items.Remove(key); // item has been picked up
+
 				
 				Debug.Log("backpack : " + f_backpack.First().GetComponent<Backpack>().available_slots[0]);
-				
-				string name = gameData.items[key].Item1;
-				Debug.Log("name : " + name);
+				// Debug.Log("backpack : " + f_backpack.First().GetComponent<Backpack>().available_slots[1]);
+				//
 				if (level.transform.Find(name + "(Clone)").gameObject != null)
 				{
 					GameObject itemToHide = level.transform.Find(name + "(Clone)").gameObject;
-
+					Debug.Log(itemToHide);
+					
 					itemToHide.SetActive(false);
 				}
-
-				gameData.items.Remove(key); // item has been picked up
+				// Debug.Log("gameData items before removing : " + gameData.items);
+				// foreach(var i in gameData.items)
+				// {
+				// 	Debug.Log("item in gamedata before removing : " + i);
+				// }
+				// gameData.items.Remove(key); // item has been picked up
+				// // Debug.Log("gameData items : " + gameData.items);
+				// foreach(var i in gameData.items)
+				// {
+				// 	Debug.Log("gamedata item : " + i);
+				// }
 
 				// gameData.items.Remove(((int)pos.x, (int)pos.y)); // item has been picked up
 

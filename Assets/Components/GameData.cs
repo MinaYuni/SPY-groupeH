@@ -18,7 +18,7 @@ public class GameData : MonoBehaviour {
 	public Dictionary<(int, int, int), string> triggerMessage; // <posX, posY, direction>, <popup_text>
 	public Dictionary<(int, int, int), (string, int)> triggerDoor; // <posX, posY, direction>, <popup_text, door_pos>
 
-	public Dictionary<(int, int), (string, int)> items; // <posX, posy>, <item_name, item_id>
+	public Dictionary<(int, int), string> items; // <posX, posy>, <item_name, item_id>
 	
 	public Dictionary<string, int> actionBlockLimit; // Is block available in library?
 	public string scoreKey = "score";
