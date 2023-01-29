@@ -61,7 +61,13 @@ public class LevelGenerator : FSystem {
 			levelName.text = Path.GetFileNameWithoutExtension(gameData.levelToLoad);
 			if (Application.platform == RuntimePlatform.WebGLPlayer)
 				HideHtmlButtons();
-		}
+
+            GameObjectManager.addComponent<ActionPerformedForLRS>(MainLoop.instance.gameObject, new
+            {
+                verb = "launched",
+                objectType = "level"
+            });
+        }
 		
 	}
 
@@ -141,7 +147,6 @@ public class LevelGenerator : FSystem {
 					createNote(child.Attributes.GetNamedItem("text").Value, int.Parse(child.Attributes.GetNamedItem("posX").Value), int.Parse(child.Attributes.GetNamedItem("posY").Value));
 					break;
 				case "player":
-				case "remoteControlledPlayer":
 				case "enemy":
 					string nameAgentByUser = "";
 					XmlNode agentName = child.Attributes.GetNamedItem("associatedScriptName");
@@ -492,17 +497,16 @@ public class LevelGenerator : FSystem {
 				item_posY = int.Parse(item.Attributes.GetNamedItem("item_posY").Value);
 			
 			gameData.items[(item_posX, item_posY)] = (item_name, item_id);
-			createPuzzlePiece(item_posX, item_posY, item_name);
+			createPuzzlePiece(item_posX, item_posY, item_id);
 			// Debug.Log("game data items : " + gameData.items[(item_posX, item_posY)]);
 		}
 	}
 
-	private void createPuzzlePiece(int gridX, int gridY, string name)
+	private void createPuzzlePiece(int gridX, int gridY, int number)
 	{
 		// Assets/Models/Puzzle/PuzzlePiece1.fbx
 		// Assets/Resources/Prefabs/PuzzlePiece1.prefab
-		// Assets/Resources/Prefabs/puzzle_piece.prefab
-		GameObject puzzlePiece = Object.Instantiate<GameObject>(Resources.Load("Prefabs/"+name) as GameObject,
+		GameObject puzzlePiece = Object.Instantiate<GameObject>(Resources.Load("Prefabs/PuzzlePiece1") as GameObject,
 			gameData.LevelGO.transform.position + new Vector3(gridY * 3, 3, gridX * 3), Quaternion.Euler(90, 0, 0),
 			gameData.LevelGO.transform);
 		puzzlePiece.GetComponent<Position>().x = gridX;

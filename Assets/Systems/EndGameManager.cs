@@ -109,6 +109,12 @@ public class EndGameManager : FSystem {
 			endPanel.GetComponent<AudioSource>().clip = Resources.Load("Sound/LoseSound") as AudioClip;
 			endPanel.GetComponent<AudioSource>().loop = true;
 			endPanel.GetComponent<AudioSource>().Play();
+
+            GameObjectManager.addComponent<ActionPerformedForLRS>(MainLoop.instance.gameObject, new
+            {
+                verb = "completed",
+                objectType = "level"
+            });
 		}
 		else if (f_requireEndPanel.First().GetComponent<NewEnd>().endType == NewEnd.Win)
 		{
@@ -125,10 +131,17 @@ public class EndGameManager : FSystem {
 			GameObjectManager.setGameObjectState(endPanel.transform.Find("ReloadState").gameObject, false);
 			GameObjectManager.setGameObjectState(endPanel.transform.Find("MainMenu").gameObject, true);
 			GameObjectManager.setGameObjectState(endPanel.transform.Find("NextLevel").gameObject, true);
-			//Check if next level exists in campaign
-			if (gameData.scenario.FindIndex(x => x == gameData.levelToLoad) >= gameData.scenario.Count - 1)
+
+            //Check if next level exists in campaign
+            if (gameData.scenario.FindIndex(x => x == gameData.levelToLoad) >= gameData.scenario.Count - 1)
 				GameObjectManager.setGameObjectState(endPanel.transform.Find("NextLevel").gameObject, false);
-		}
+
+            GameObjectManager.addComponent<ActionPerformedForLRS>(MainLoop.instance.gameObject, new
+            {
+                verb = "completed",
+                objectType = "level"
+            });
+        }
 		else if (f_requireEndPanel.First().GetComponent<NewEnd>().endType == NewEnd.BadCondition)
 		{
 			Transform verticalCanvas = endPanel.transform.Find("VerticalCanvas");

@@ -12,15 +12,13 @@ public class ItemCollectSystem : FSystem {
 	private GameData gameData = FamilyManager.getFamily(new AllOfComponents(typeof(GameData))).First().GetComponent<GameData>();
 
 	public GameObject backpackPanel;
-	public GameObject level;
 	// private Vector2 pos = new Vector2(1, 2);
 	// private bool collected = false;
 	//add a family of items on the level??
 
 	public ItemCollectSystem()
-	{ 
+	{
 		instance = this;
-		
 	}
 // deux component = pos and type/name/id... 
 	// Use to process your families.
@@ -39,15 +37,7 @@ public class ItemCollectSystem : FSystem {
 				GameObjectManager.addComponent<Item>(backpackPanel, new{id=gameData.items[key]});
 				
 				Debug.Log("backpack : " + f_backpack.First().GetComponent<Backpack>().available_slots[0]);
-				
-				string name = gameData.items[key].Item1;
-				Debug.Log("name : " + name);
-				GameObject itemToHide = level.transform.Find(name+"(Clone)").gameObject;
-			
-				itemToHide.SetActive(false);
-
 				gameData.items.Remove(key); // item has been picked up
-
 				// gameData.items.Remove(((int)pos.x, (int)pos.y)); // item has been picked up
 
 			}

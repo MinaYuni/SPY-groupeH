@@ -12,7 +12,7 @@ public class GameData : MonoBehaviour {
 	public int[] levelToLoadScore; // levelToLoadScore[0] = best score (3 stars) ; levelToLoadScore[1] = medium score (2 stars)
 	
 	public List<(string, string, float, int, int)> dialogMessage; // list of (dialogText, imageName, imageHeight, camX, camY)
-	public List<(string, string, float, int, int, bool)> popup = null; // (dialogText, imageName, imageHeight, camX, camY, hasInput) //TODO: this shouldn't be a list
+	public List<(string, string, float, int, int, bool)> popup = null; // (dialogText, imageName, imageHeight, camX, camY, hasInput)
 	public string popupInputText; // Text player typed into the popup input field
 	
 	public Dictionary<(int, int, int), string> triggerMessage; // <posX, posY, direction>, <popup_text>
