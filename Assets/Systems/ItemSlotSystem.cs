@@ -49,7 +49,7 @@ public class ItemSlotSystem : FSystem {
         Item item = itemGo.GetComponent<Item>();
         string name = item.id.Item1;
         // Debug.Log("item name : " + name);
-        GameObject itemToShow = backpackPanel.transform.Find("key").gameObject;
+        GameObject itemToShow = backpackPanel.transform.Find(name).gameObject;
         // Debug.Log("itemToShow : " + itemToShow);
         // Debug.Log("itemToShow is active : " + itemToShow + " " + itemToShow.activeSelf);
         GameObject iconGo = itemToShow.transform.Find("IconImage").gameObject;
@@ -66,7 +66,7 @@ public class ItemSlotSystem : FSystem {
     private void showItemFromStart(string name)
     {
         // Debug.Log("item name : " + name);
-        GameObject itemToShow = backpackPanel.transform.Find("key").gameObject;
+        GameObject itemToShow = backpackPanel.transform.Find(name).gameObject;
         // Debug.Log("itemToShow : " + itemToShow);
         GameObject iconGo = itemToShow.transform.Find("IconImage").gameObject;
         
