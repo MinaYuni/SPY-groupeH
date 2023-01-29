@@ -36,8 +36,10 @@ public class KeyAndDoorSystem : FSystem {
 
 				if(faced){
 					var backp = f_backpack.First().GetComponent<Backpack>().available_slots;
-					foreach(var item in backp){
-						if(item.Item1 == "key" && item.Item2 == slot_id){
+					foreach(var item in backp)
+					{
+						string name = "key" + slot_id;
+						if(item == name){
 							closeDoor(door);
 						}
 					}

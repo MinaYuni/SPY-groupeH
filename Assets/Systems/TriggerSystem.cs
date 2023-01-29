@@ -81,7 +81,8 @@ public class TriggerSystem : FSystem {
 								popped = false;
 							} else if (gameData.popupInputText == "8462") {
 								configurePopup("Voici votre nouvelle clé. Elle ouvre la porte 01.", "key.png", -1, -1, -1, false);
-								gameData.items.Add((triggerablePos.x, triggerablePos.y), ("key", 01));
+								gameData.items.Add((triggerablePos.x, triggerablePos.y), "key1");
+								GameObject key = UnityEngine.Object.Instantiate<GameObject>(Resources.Load("Prefabs/key1") as GameObject, gameData.LevelGO.transform.position + new Vector3(triggerablePos.y * 3, 3, triggerablePos.x * 3), Quaternion.Euler(90, 0, 0), gameData.LevelGO.transform);
 								gameData.popupInputText = null;
 							}
 							break;
@@ -153,7 +154,7 @@ public class TriggerSystem : FSystem {
 		// If door is locked, check backpack for matching key
 		var backp = f_backpack.First().GetComponent<Backpack>().available_slots;
 		foreach (var item in backp){
-			if (item.Item1 == "key" && item.Item2 == lockedDoor.GetComponent<ActivationSlot>().slotID){ // if robot has the key
+			if (item == "key"+ lockedDoor.GetComponent<ActivationSlot>().slotID){ // if robot has the key
 				popped = false; // TODO: see if we open the door here?
 				return;
 			}
