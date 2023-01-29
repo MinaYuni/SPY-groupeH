@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<doc>
+    <blockLimit blockType="Forward">
+        Bloc permettant de bouger le robot tout droit d'une case.
+    </blockLimit>
+
+    <blockLimit blockType="TurnLeft">
+        Bloc permettant de faire tourner le robot vers à la gauche (90°) sans pour autant avancer.
+    </blockLimit>
+
+    <blockLimit blockType="TurnRight">
+        Bloc permettant de faire tourner le robot vers à la droite (90°) sans pour autant avancer.
+    </blockLimit>
+
+    <blockLimit blockType="Wait">
+        Bloc permettant de faire attendre le robot pendant un tick.
+    </blockLimit>
+
+    <blockLimit blockType="Activate">
+        Bloc [insérer description "Activate"].
+    </blockLimit>
+
+    <blockLimit blockType="TurnBack">
+        Bloc permettant de faire tourner le robot de 180° sans pour autant avancer.
+    </blockLimit>
+
+    <blockLimit blockType="IfThen">
+        Bloc de condition If-Then.
+    </blockLimit>
+
+    <blockLimit blockType="IfElse">
+        Bloc de condition If-Else.
+    </blockLimit>
+
+    <blockLimit blockType="ForLoop">
+        Bloc pour faire une boucle For.
+    </blockLimit>
+
+    <blockLimit blockType="While">
+        Bloc pour faire une boucle While.
+    </blockLimit>
+
+    <blockLimit blockType="Forever">
+        Bloc [insérer description "Forever"].
+    </blockLimit>
+
+    <blockLimit blockType="AndOperator">
+        Bloc opérateur ET.
+    </blockLimit>
+
+    <blockLimit blockType="OrOperator">
+        Bloc opérateur OU.
+    </blockLimit>
+
+    <blockLimit blockType="NotOperator">
+        Bloc opérateur NOT.
+    </blockLimit>
+
+    <blockLimit blockType="WallFront">
+        Bloc [insérer description "WallFront"].
+    </blockLimit>
+
+    <blockLimit blockType="WallLeft">
+        Bloc [insérer description "WallLeft"].
+    </blockLimit>
+
+    <blockLimit blockType="WallRight">
+        Bloc [insérer description "WallRight"].
+    </blockLimit>
+
+    <blockLimit blockType="Enemy">
+        Bloc [insérer description "Enemy"].
+    </blockLimit>
+
+    <blockLimit blockType="RedArea">
+        Bloc [insérer description "RedArea"].
+    </blockLimit>
+
+    <blockLimit blockType="FieldGate">
+        Bloc [insérer description "FieldGate"].
+    </blockLimit>
+
+    <blockLimit blockType="Terminal">
+        Bloc [insérer description "Terminal"].
+    </blockLimit>
+
+    <blockLimit blockType="Exit">
+        Bloc [insérer description "Exit"].
+    </blockLimit>
+</doc>

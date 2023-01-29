@@ -1,16 +1,43 @@
 {
     "action": {},
-    "activity": {
-        "instructions": {
-            "description": {
-                "en-US": "the briefing panel (instructions)"
-            },
-            "id": "https://www.lip6.fr/mocah/invaliduri/activity-types/briefing",
-            "name": {
-                "en-US": "instructions"
-            }
-        }
+  "activity": {
+    "instructions": {
+      "description": {
+        "en-US": "the briefing panel (instructions)"
+      },
+      "id": "https://www.lip6.fr/mocah/invaliduri/activity-types/briefing",
+      "name": {
+        "en-US": "instructions"
+      }
     },
+    "documentation": {
+      "description": {
+        "en-US": "the documentation panel"
+      },
+      "id": "https://www.lip6.fr/mocah/invaliduri/activity-types/documentation",
+      "name": {
+        "en-US": "documentation"
+      }
+    },
+    "program": {
+      "description": {
+        "en-US": "the program"
+      },
+      "id": "https://www.lip6.fr/mocah/invaliduri/activity-types/program",
+      "name": {
+        "en-US": "program"
+      }
+    },
+    "level": {
+      "description": {
+        "en-US": "a level"
+      },
+      "id": "https://www.lip6.fr/mocah/invaliduri/activity-types/level",
+      "name": {
+        "en-US": "level"
+      }
+    }
+  },
     "content": {},
     "direction": {},
     "domain": {},
@@ -26,15 +53,70 @@
     "topic": {},
     "type": {},
     "value": {},
-    "verb": {
-        "opened": {
-            "description": {
-                "en-US": "indicates that the actor opens briefing dialogs (instructions)"
-            },
-            "id": "https://www.lip6.fr/mocah/invaliduri/verbs/openned",
-            "name": {
-                "en-US": "opened"
-            }
-        }
+  "verb": {
+    "opened": {
+      "description": {
+        "en-US": "indicates that the actor opens a panel"
+      },
+      "id": "https://www.lip6.fr/mocah/invaliduri/verbs/openned",
+      "name": {
+        "en-US": "opened"
+      }
+    },
+    "stopped": {
+      "description": {
+        "en-US": "indicates that the actor stops a program"
+      },
+      "id": "https://www.lip6.fr/mocah/invaliduri/verbs/stopped",
+      "name": {
+        "en-US": "stopped"
+      }
+    },
+    "started": {
+      "description": {
+        "en-US": "indicates that the actor starts a program"
+      },
+      "id": "https://www.lip6.fr/mocah/invaliduri/verbs/started",
+      "name": {
+        "en-US": "started"
+      }
+    },
+    "next": {
+      "description": {
+        "en-US": "indicates that the actor executes a next step of a program"
+      },
+      "id": "https://www.lip6.fr/mocah/invaliduri/verbs/next",
+      "name": {
+        "en-US": "next"
+      }
+    },
+    "paused": {
+      "description": {
+        "en-US": "indicates that the actor pauses a program"
+      },
+      "id": "https://www.lip6.fr/mocah/invaliduri/verbs/paused",
+      "name": {
+        "en-US": "paused"
+      }
+    },
+    "launched": {
+      "description": {
+        "en-US": "indicates that the actor launches a level"
+      },
+      "id": "https://www.lip6.fr/mocah/invaliduri/verbs/launched",
+      "name": {
+        "en-US": "launched"
+      }
+    },
+    "completed": {
+      "description": {
+        "en-US": "indicates that the actor completes a level"
+      },
+      "id": "https://www.lip6.fr/mocah/invaliduri/verbs/completed",
+      "name": {
+        "en-US": "completed"
+      }
     }
+
+  }
 }

@@ -61,7 +61,13 @@ public class LevelGenerator : FSystem {
 			levelName.text = Path.GetFileNameWithoutExtension(gameData.levelToLoad);
 			if (Application.platform == RuntimePlatform.WebGLPlayer)
 				HideHtmlButtons();
-		}
+
+            GameObjectManager.addComponent<ActionPerformedForLRS>(MainLoop.instance.gameObject, new
+            {
+                verb = "launched",
+                objectType = "level"
+            });
+        }
 		
 	}
 
@@ -70,7 +76,7 @@ public class LevelGenerator : FSystem {
 	{
 		gameData.triggerMessage = new Dictionary<(int, int, int),string>();
 		gameData.triggerDoor = new Dictionary<(int, int, int),(string, int)>();
-		gameData.items = new Dictionary<(int, int), string>();
+		gameData.items = new Dictionary<(int, int), (string, int)>();
 		gameData.totalActionBlocUsed = 0;
 		gameData.totalStep = 0;
 		gameData.totalExecute = 0;
@@ -141,7 +147,6 @@ public class LevelGenerator : FSystem {
 					createNote(child.Attributes.GetNamedItem("text").Value, int.Parse(child.Attributes.GetNamedItem("posX").Value), int.Parse(child.Attributes.GetNamedItem("posY").Value));
 					break;
 				case "player":
-				case "remoteControlledPlayer":
 				case "enemy":
 					string nameAgentByUser = "";
 					XmlNode agentName = child.Attributes.GetNamedItem("associatedScriptName");
@@ -247,9 +252,6 @@ public class LevelGenerator : FSystem {
 				break;
 			case "enemy": // Enemy
 				entity = Object.Instantiate<GameObject>(Resources.Load ("Prefabs/Drone") as GameObject, gameData.LevelGO.transform.position + new Vector3(gridY*3,5f,gridX*3), Quaternion.Euler(0,0,0), gameData.LevelGO.transform);
-				break;
-			case "remoteControlledPlayer":
-				entity = Object.Instantiate<GameObject>(Resources.Load ("Prefabs/RoboSphere") as GameObject, gameData.LevelGO.transform.position + new Vector3(gridY*3,5f,gridX*3), Quaternion.Euler(0,0,0), gameData.LevelGO.transform);
 				break;
 		}
 
@@ -479,9 +481,9 @@ public class LevelGenerator : FSystem {
 			string item_name = null;
 			if (item.Attributes.GetNamedItem("item_name") != null)
 				item_name = item.Attributes.GetNamedItem("item_name").Value;
-			// int item_id = -1;
-			// if (item.Attributes.GetNamedItem("item_id") != null)
-			// 	item_id = int.Parse(item.Attributes.GetNamedItem("item_id").Value);
+			int item_id = -1;
+			if (item.Attributes.GetNamedItem("item_id") != null)
+				item_id = int.Parse(item.Attributes.GetNamedItem("item_id").Value);
 			int item_posX = -1;
 			if (item.Attributes.GetNamedItem("item_posX") != null)
 				item_posX = int.Parse(item.Attributes.GetNamedItem("item_posX").Value);
@@ -489,18 +491,17 @@ public class LevelGenerator : FSystem {
 			if (item.Attributes.GetNamedItem("item_posY") != null)
 				item_posY = int.Parse(item.Attributes.GetNamedItem("item_posY").Value);
 			
-			gameData.items[(item_posX, item_posY)] = item_name;
-			createPuzzlePiece(item_posX, item_posY, item_name);
+			gameData.items[(item_posX, item_posY)] = (item_name, item_id);
+			createPuzzlePiece(item_posX, item_posY, item_id);
 			// Debug.Log("game data items : " + gameData.items[(item_posX, item_posY)]);
 		}
 	}
 
-	private void createPuzzlePiece(int gridX, int gridY, string name)
+	private void createPuzzlePiece(int gridX, int gridY, int number)
 	{
 		// Assets/Models/Puzzle/PuzzlePiece1.fbx
 		// Assets/Resources/Prefabs/PuzzlePiece1.prefab
-		// Assets/Resources/Prefabs/puzzle_piece.prefab
-		GameObject puzzlePiece = Object.Instantiate<GameObject>(Resources.Load("Prefabs/"+name) as GameObject,
+		GameObject puzzlePiece = Object.Instantiate<GameObject>(Resources.Load("Prefabs/PuzzlePiece1") as GameObject,
 			gameData.LevelGO.transform.position + new Vector3(gridY * 3, 3, gridX * 3), Quaternion.Euler(90, 0, 0),
 			gameData.LevelGO.transform);
 		puzzlePiece.GetComponent<Position>().x = gridX;

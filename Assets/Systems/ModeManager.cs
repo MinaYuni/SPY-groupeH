@@ -43,5 +43,11 @@ public class ModeManager : FSystem {
 	public void setEditMode()
 	{
 		GameObjectManager.addComponent<EditMode>(MainLoop.instance.gameObject);
-	}
+
+        GameObjectManager.addComponent<ActionPerformedForLRS>(MainLoop.instance.gameObject, new
+        {
+            verb = "stopped",
+            objectType = "program"
+        });
+    }
 }

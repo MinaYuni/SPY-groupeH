@@ -31,8 +31,8 @@ public class ItemSlotSystem : FSystem {
         var backp = f_backpack.First().GetComponent<Backpack>().available_slots;
         foreach (var item in backp)
         {
-            Debug.Log("item number 1 : " + item);
-            showItemFromStart(item);
+            // Debug.Log("item number 1 : " + item);
+            showItemFromStart(item.Item1);
         }
 
         // now check each time an item is added        
@@ -47,17 +47,15 @@ public class ItemSlotSystem : FSystem {
     private void showItem(GameObject itemGo)
     {
         Item item = itemGo.GetComponent<Item>();
-        string name = item.id;
-        GameObject.Destroy(item);
+        string name = item.id.Item1;
         // Debug.Log("item name : " + name);
-        GameObject itemToShow = backpackPanel.transform.Find(name).gameObject;
+        GameObject itemToShow = backpackPanel.transform.Find("key").gameObject;
         // Debug.Log("itemToShow : " + itemToShow);
         // Debug.Log("itemToShow is active : " + itemToShow + " " + itemToShow.activeSelf);
         GameObject iconGo = itemToShow.transform.Find("IconImage").gameObject;
         
         
         Image image = iconGo.GetComponent<Image>();
-        // Debug.Log("itemToShow image : " + image.enabled);
         if (image != null)
         {
             image.enabled = true;
@@ -68,7 +66,7 @@ public class ItemSlotSystem : FSystem {
     private void showItemFromStart(string name)
     {
         // Debug.Log("item name : " + name);
-        GameObject itemToShow = backpackPanel.transform.Find(name).gameObject;
+        GameObject itemToShow = backpackPanel.transform.Find("key").gameObject;
         // Debug.Log("itemToShow : " + itemToShow);
         GameObject iconGo = itemToShow.transform.Find("IconImage").gameObject;
         
