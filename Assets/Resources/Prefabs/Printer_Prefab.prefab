@@ -486,6 +486,7 @@ GameObject:
   - component: {fileID: 2878603450565416301}
   - component: {fileID: 6117287322264544860}
   - component: {fileID: 7747203749733097988}
+  - component: {fileID: 2540841604390744796}
   m_Layer: 8
   m_Name: Printer_Prefab
   m_TagString: Untagged
@@ -568,3 +569,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: "Entre un code pour imprimer une cl\xE9 !"
+--- !u!114 &2540841604390744796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd38486b38fcf7e40938b677092cf4ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popupType: 0
+  triggerLocation: 1
