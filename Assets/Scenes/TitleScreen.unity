@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657743, g: 0.4964133, b: 0.5748175, a: 1}
+  m_IndirectSpecularColor: {r: 0.446577, g: 0.49641263, b: 0.5748162, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -16376,6 +16376,7 @@ GameObject:
   - component: {fileID: 1645587991}
   - component: {fileID: 1645587992}
   - component: {fileID: 1645587993}
+  - component: {fileID: 1645587994}
   m_Layer: 0
   m_Name: Main_Loop
   m_TagString: Untagged
@@ -16397,7 +16398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabGameData: {fileID: 3833649377614804033, guid: 0c781d4c9bf00bb48ad0e4df8f089e03,
     type: 3}
-  prefabBackpack: {fileID: 431504094526762188, guid: 4708950869077b447b8de3de2b039784,
+  prefabBackpack: {fileID: 6777599736707661824, guid: 4708950869077b447b8de3de2b039784,
     type: 3}
   mainCanvas: {fileID: 350375277}
   MainMenu: {fileID: 1667186165}
@@ -16569,6 +16570,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71df5f373a1f9cf458b84bddc2690933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1645587994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645587984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891cf297933c6714a9440dcf3b837b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1649896675
