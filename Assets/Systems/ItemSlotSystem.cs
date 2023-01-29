@@ -51,6 +51,7 @@ public class ItemSlotSystem : FSystem {
         // Debug.Log("item name : " + name);
         GameObject itemToShow = backpackPanel.transform.Find("key").gameObject;
         // Debug.Log("itemToShow : " + itemToShow);
+        // Debug.Log("itemToShow is active : " + itemToShow + " " + itemToShow.activeSelf);
         GameObject iconGo = itemToShow.transform.Find("IconImage").gameObject;
         
         
