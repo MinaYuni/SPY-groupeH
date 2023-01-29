@@ -249,7 +249,9 @@ public class LevelGenerator : FSystem {
 				entity = Object.Instantiate<GameObject>(Resources.Load ("Prefabs/Drone") as GameObject, gameData.LevelGO.transform.position + new Vector3(gridY*3,5f,gridX*3), Quaternion.Euler(0,0,0), gameData.LevelGO.transform);
 				break;
 			case "remoteControlledPlayer":
-				entity = Object.Instantiate<GameObject>(Resources.Load ("Prefabs/RoboSphere") as GameObject, gameData.LevelGO.transform.position + new Vector3(gridY*3,5f,gridX*3), Quaternion.Euler(0,0,0), gameData.LevelGO.transform);
+				entity = Object.Instantiate<GameObject>(Resources.Load ("Prefabs/RoboSphere") as GameObject, gameData.LevelGO.transform.position + new Vector3(gridY*3,1.5f,gridX*3), Quaternion.Euler(0,0,0), gameData.LevelGO.transform);
+				entity.tag = "KeyboardControllable";
+				entity.AddComponent<CharacterController>();
 				break;
 		}
 
@@ -269,7 +271,7 @@ public class LevelGenerator : FSystem {
 		executablePanel.GetComponentInChildren<LinkedWith>(true).target = entity;
 
 		// On va charger l'image et le nom de l'agent selon l'agent (robot, ennemi etc...)
-		if (type == "player")
+		if (type == "player" || type == "remoteControlledPlayer")
 		{
 			nbAgentCreate++;
 			// On nomme l'agent
