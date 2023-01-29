@@ -2,64 +2,16 @@
 <level>
   <map>
     <line>
-      <cell value="-1" />
-      <cell value="-1" />
-      <cell value="-1" />
-      <cell value="-1" />
-      <cell value="-1" />
-      <cell value="1" />
-      <cell value="1" />
-      <cell value="1" />
-      <cell value="1" />
-      <cell value="-1" />
-    </line>
-    <line>
-      <cell value="-1" />
-      <cell value="-1" />
-      <cell value="-1" />
-      <cell value="-1" />
-      <cell value="-1" />
-      <cell value="1" />
-      <cell value="0" />
-      <cell value="3" />
-      <cell value="1" />
-      <cell value="-1" />
-    </line>
-    <line>
       <cell value="1" />
       <cell value="1" />
       <cell value="1" />
       <cell value="1" />
       <cell value="1" />
       <cell value="1" />
-      <cell value="0" />
-      <cell value="0" />
-      <cell value="1" />
-      <cell value="-1" />
-    </line>
-    <line>
       <cell value="1" />
       <cell value="1" />
-      <cell value="0" />
-      <cell value="0" />
       <cell value="1" />
       <cell value="1" />
-      <cell value="0" />
-      <cell value="0" />
-      <cell value="1" />
-      <cell value="-1" />
-    </line>
-    <line>
-      <cell value="1" />
-      <cell value="0" />
-      <cell value="0" />
-      <cell value="0" />
-      <cell value="0" />
-      <cell value="1" />
-      <cell value="0" />
-      <cell value="0" />
-      <cell value="1" />
-      <cell value="-1" />
     </line>
     <line>
       <cell value="1" />
@@ -70,48 +22,94 @@
       <cell value="0" />
       <cell value="0" />
       <cell value="0" />
+      <cell value="0" />
       <cell value="1" />
-      <cell value="-1" />
     </line>
     <line>
       <cell value="1" />
-      <cell value="0" />
-      <cell value="0" />
-      <cell value="0" />
-      <cell value="0" />
+      <cell value="1" />
       <cell value="1" />
       <cell value="1" />
       <cell value="0" />
       <cell value="1" />
-      <cell value="-1" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="1" />
     </line>
     <line>
       <cell value="1" />
       <cell value="2" />
       <cell value="0" />
-      <cell value="0" />
-      <cell value="1" />
       <cell value="1" />
       <cell value="0" />
-      <cell value="0" />
-      <cell value="1" />
-      <cell value="-1" />
-    </line>
-    <line>
-      <cell value="1" />
-      <cell value="0" />
-      <cell value="0" />
-      <cell value="0" />
-      <cell value="1" />
       <cell value="1" />
       <cell value="0" />
       <cell value="1" />
       <cell value="1" />
-      <cell value="-1" />
+      <cell value="1" />
     </line>
     <line>
       <cell value="1" />
       <cell value="1" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="3" />
+      <cell value="1" />
+    </line>
+    <line>
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="1" />
+    </line>
+    <line>
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="1" />
+    </line>
+    <line>
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="1" />
+    </line>
+    <line>
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="1" />
+    </line>
+    <line>
       <cell value="1" />
       <cell value="1" />
       <cell value="1" />
@@ -119,49 +117,47 @@
       <cell value="1" />
       <cell value="1" />
       <cell value="1" />
-      <cell value="-1" />
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="1" />
     </line>
   </map>
   <dialogs>
-    <dialog text="Une nouvelle machine ! On dirait une sorte d'imprimante 3D. Tu vas probablement devoir t'en servir.&#xA; " />
+    <dialog text="" />
   </dialogs>
   <blockLimits>
     <blockLimit blockType="Forward" limit="-1" />
     <blockLimit blockType="TurnLeft" limit="-1" />
     <blockLimit blockType="TurnRight" limit="-1" />
-    <blockLimit blockType="Wait" limit="-1" />
+    <blockLimit blockType="Wait" limit="0" />
     <blockLimit blockType="Activate" limit="-1" />
     <blockLimit blockType="TurnBack" limit="-1" />
-    <blockLimit blockType="IfThen" limit="0" />
-    <blockLimit blockType="IfElse" limit="0" />
-    <blockLimit blockType="ForLoop" limit="0" />
-    <blockLimit blockType="While" limit="0" />
+    <blockLimit blockType="IfThen" limit="-1" />
+    <blockLimit blockType="IfElse" limit="-1" />
+    <blockLimit blockType="ForLoop" limit="-1" />
+    <blockLimit blockType="While" limit="-1" />
     <blockLimit blockType="Forever" limit="0" />
     <blockLimit blockType="AndOperator" limit="0" />
     <blockLimit blockType="OrOperator" limit="0" />
     <blockLimit blockType="NotOperator" limit="0" />
-    <blockLimit blockType="WallFront" limit="0" />
-    <blockLimit blockType="WallLeft" limit="0" />
-    <blockLimit blockType="WallRight" limit="0" />
+    <blockLimit blockType="WallFront" limit="-1" />
+    <blockLimit blockType="WallLeft" limit="-1" />
+    <blockLimit blockType="WallRight" limit="-1" />
     <blockLimit blockType="Enemy" limit="0" />
     <blockLimit blockType="RedArea" limit="0" />
-    <blockLimit blockType="FieldGate" limit="0" />
-    <blockLimit blockType="Terminal" limit="0" />
+    <blockLimit blockType="FieldGate" limit="-1" />
+    <blockLimit blockType="Terminal" limit="-1" />
     <blockLimit blockType="Exit" limit="0" />
   </blockLimits>
-  <printer state="1" posY="3" posX="2" direction="1">
-    <slot slotId="0" />
-  </printer>
-  <lockedDoor posY="5" posX="5" direction="3" slotId="1" />
-  <player associatedScriptName="Alan" posY="7" posX="1" direction="2" />
-  <triggers>
-    <trigger robot_posY="5" robot_posX="4" robot_direction="2" door_id="0" door_posX="5" door_posY="5" popup="HEY ! Tu n'as pas la clé pour ouvrir cette porte." popup_title="Porte 07" />
-    <trigger robot_posY="3" robot_posX="2" robot_direction="0" trigger_id="trigger_printer" popup="Je suis une imprimante 3D. Quelle clé veux-tu imprimer ?" popup_title="Imprimante 3D" />
-  </triggers>
-  <note text="" posY="4" posX="3" />
-<!--  <coin posY="8" posX="6" />-->
-  <items>
-    <item item_posX="6" item_posY="8" item_name="puzzle1" item_id="0"/>
-  </items>
-  <script name="Alan" editMode="2" type="0" />
+  <console state="1" posY="2" posX="8" direction="0">
+    <slot slotId="3" />
+  </console>
+  <coin posY="1" posX="1" />
+  <player associatedScriptName="Alan" posY="3" posX="1" direction="2" />
+  <door posY="8" posX="7" direction="3" slotId="3" />
+  <door posY="5" posX="8" direction="1" slotId="2" />
+  <console state="1" posY="5" posX="4" direction="1">
+    <slot slotId="2" />
+  </console>
+  <script name="Alan" editMode="0" type="3" />
 </level>
