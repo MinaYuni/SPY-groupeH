@@ -481,8 +481,21 @@ public class LevelGenerator : FSystem {
 				item_posY = int.Parse(item.Attributes.GetNamedItem("item_posY").Value);
 			
 			gameData.items[(item_posX, item_posY)] = (item_name, item_id);
+			createPuzzlePiece(item_posX, item_posY, item_id);
 			// Debug.Log("game data items : " + gameData.items[(item_posX, item_posY)]);
 		}
+	}
+
+	private void createPuzzlePiece(int gridX, int gridY, int number)
+	{
+		// Assets/Models/Puzzle/PuzzlePiece1.fbx
+		// Assets/Resources/Prefabs/PuzzlePiece1.prefab
+		GameObject puzzlePiece = Object.Instantiate<GameObject>(Resources.Load("Prefabs/PuzzlePiece1") as GameObject,
+			gameData.LevelGO.transform.position + new Vector3(gridY * 3, 3, gridX * 3), Quaternion.Euler(90, 0, 0),
+			gameData.LevelGO.transform);
+		puzzlePiece.GetComponent<Position>().x = gridX;
+		puzzlePiece.GetComponent<Position>().y = gridY;
+		GameObjectManager.bind(puzzlePiece);
 	}
 
 	private void readXMLDialogs(XmlNode dialogs)
