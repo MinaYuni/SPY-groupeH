@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<level>
+  <map>
+    <line>
+      <cell value="-1" />
+      <cell value="-1" />
+      <cell value="-1" />
+      <cell value="-1" />
+      <cell value="-1" />
+      <cell value="-1" />
+      <cell value="-1" />
+      <cell value="-1" />
+      <cell value="-1" />
+      <cell value="-1" />
+    </line>
+    <line>
+      <cell value="-1" />
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="3" />
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="-1" />
+      <cell value="-1" />
+      <cell value="-1" />
+      <cell value="-1" />
+    </line>
+    <line>
+      <cell value="-1" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="-1" />
+      <cell value="-1" />
+      <cell value="-1" />
+      <cell value="-1" />
+    </line>
+    <line>
+      <cell value="-1" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="-1" />
+    </line>
+    <line>
+      <cell value="-1" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="-1" />
+    </line>
+    <line>
+      <cell value="-1" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="-1" />
+    </line>
+    <line>
+      <cell value="-1" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="-1" />
+    </line>
+    <line>
+      <cell value="-1" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="-1" />
+    </line>
+    <line>
+      <cell value="-1" />
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="2" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="-1" />
+    </line>
+    <line>
+      <cell value="-1" />
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="-1" />
+    </line>
+  </map>
+  <dialogs>
+    <dialog text="La sortie est juste-là... Mais il y a une porte sur le côté. Que peut-elle bien cacher ?" camX="5" camY="4" />
+    <dialog text="Ah, voici comment ouvrir la porte. Va sur la case du terminal et active-le avec la commande &quot;Activer&quot;." camX="4" camY="6" />
+  </dialogs>
+  <blockLimits>
+    <blockLimit blockType="Forward" limit="-1" />
+    <blockLimit blockType="TurnLeft" limit="-1" />
+    <blockLimit blockType="TurnRight" limit="-1" />
+    <blockLimit blockType="Wait" limit="0" />
+    <blockLimit blockType="Activate" limit="-1" />
+    <blockLimit blockType="TurnBack" limit="-1" />
+    <blockLimit blockType="IfThen" limit="0" />
+    <blockLimit blockType="IfElse" limit="0" />
+    <blockLimit blockType="ForLoop" limit="0" />
+    <blockLimit blockType="While" limit="0" />
+    <blockLimit blockType="Forever" limit="0" />
+    <blockLimit blockType="AndOperator" limit="0" />
+    <blockLimit blockType="OrOperator" limit="0" />
+    <blockLimit blockType="NotOperator" limit="0" />
+    <blockLimit blockType="WallFront" limit="0" />
+    <blockLimit blockType="WallLeft" limit="0" />
+    <blockLimit blockType="WallRight" limit="0" />
+    <blockLimit blockType="Enemy" limit="0" />
+    <blockLimit blockType="RedArea" limit="0" />
+    <blockLimit blockType="FieldGate" limit="0" />
+    <blockLimit blockType="Terminal" limit="0" />
+    <blockLimit blockType="Exit" limit="0" />
+  </blockLimits>
+  <door posY="4" posX="5" direction="3" slotId="0" />
+  <player associatedScriptName="Alan" posY="8" posX="3" direction="0" />
+  <console state="1" posY="6" posX="4" direction="3">
+    <slot slotId="0" />
+  </console>
+  <items>
+    <item item_posX="6" item_posY="6" item_name="puzzle4" item_id="0"/>
+  </items>
+  <decoration name="Modern Furniture/Prefabs/Book Rack" posY="8" posX="7" direction="0" />
+  <script name="Alan" editMode="2" type="3" />
+</level>

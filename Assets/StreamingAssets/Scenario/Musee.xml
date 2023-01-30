@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<scenario>
+    <level name = "Levels/Musee/Entree.xml" />
+    <level name = "Levels/Musee/Corridor.xml" />
+    <level name = "Levels/Musee/Gardes.xml" />
+    <level name = "Levels/Musee/Console.xml" />
+    <level name = "Levels/Musee/Couloir.xml" />
+    <level name = "Levels/Musee/Clef.xml" />
+    <level name = "Levels/Musee/Pour.xml" />
+    <level name = "Levels/Musee/Mur.xml" />
+    <level name = "Levels/Musee/Backflip.xml" />
+    <level name = "Levels/Musee/Camera.xml" />
+
+</scenario>

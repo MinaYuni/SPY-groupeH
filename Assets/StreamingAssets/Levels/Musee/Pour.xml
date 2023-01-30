@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<level>
+  <map>
+    <line>
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="1" />
+    </line>
+    <line>
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="1" />
+    </line>
+    <line>
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="1" />
+    </line>
+    <line>
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="2" />
+      <cell value="1" />
+    </line>
+    <line>
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="1" />
+    </line>
+    <line>
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="1" />
+    </line>
+    <line>
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="3" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="0" />
+      <cell value="1" />
+    </line>
+    <line>
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="0" />
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="1" />
+      <cell value="1" />
+    </line>
+  </map>
+  <dialogs>
+    <dialog text="Tu peux choisir pour combien de pas avancer avec cette nouvelle boucle !" />
+  </dialogs>
+  <blockLimits>
+    <blockLimit blockType="Forward" limit="2" />
+    <blockLimit blockType="TurnLeft" limit="1" />
+    <blockLimit blockType="TurnRight" limit="0" />
+    <blockLimit blockType="Wait" limit="0" />
+    <blockLimit blockType="Activate" limit="0" />
+    <blockLimit blockType="TurnBack" limit="0" />
+    <blockLimit blockType="IfThen" limit="0" />
+    <blockLimit blockType="IfElse" limit="0" />
+    <blockLimit blockType="ForLoop" limit="2" />
+    <blockLimit blockType="While" limit="0" />
+    <blockLimit blockType="Forever" limit="0" />
+    <blockLimit blockType="AndOperator" limit="0" />
+    <blockLimit blockType="OrOperator" limit="0" />
+    <blockLimit blockType="NotOperator" limit="0" />
+    <blockLimit blockType="WallFront" limit="0" />
+    <blockLimit blockType="WallLeft" limit="0" />
+    <blockLimit blockType="WallRight" limit="0" />
+    <blockLimit blockType="Enemy" limit="0" />
+    <blockLimit blockType="RedArea" limit="0" />
+    <blockLimit blockType="FieldGate" limit="0" />
+    <blockLimit blockType="Terminal" limit="0" />
+    <blockLimit blockType="Exit" limit="0" />
+  </blockLimits>
+  <door posY="7" posX="3" direction="0" slotId="0" />
+  <door posY="0" posX="2" direction="0" slotId="0" />
+  <door posY="0" posX="3" direction="0" slotId="0" />
+  <door posY="0" posX="4" direction="0" slotId="0" />
+  <decoration name="Modern Furniture/Prefabs/Book Rack" posY="3" posX="1" direction="2" />
+<!--  <coin posY="3" posX="3" />-->
+  <items>
+    <item item_posX="3" item_posY="3" item_name="puzzle6" item_id="0"/>
+  </items>
+  <player associatedScriptName="Alan" posY="3" posX="6" direction="3" />
+  <script name="Alan" editMode="2" type="3" />
+</level>
