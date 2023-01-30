@@ -154,4 +154,5 @@
     <item item_posX="4" item_posY="4" item_name="puzzle7" item_id="0"/>
   </items>
   <script name="Alan" editMode="2" type="3" />
+  <score twoStars="0" threeStars="5500"/>
 </level>

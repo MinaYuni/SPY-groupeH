@@ -17,7 +17,7 @@
     </blockLimit>
 
     <blockLimit blockType="Activate">
-        Bloc [insérer description "Activate"].
+        Bloc permettant d'activer un terminal.
     </blockLimit>
 
     <blockLimit blockType="TurnBack">
@@ -25,15 +25,15 @@
     </blockLimit>
 
     <blockLimit blockType="IfThen">
-        Bloc de condition If-Then.
+        Bloc de condition Si-Alors.
     </blockLimit>
 
     <blockLimit blockType="IfElse">
-        Bloc de condition If-Else.
+        Bloc de condition Si-Sinon.
     </blockLimit>
 
     <blockLimit blockType="ForLoop">
-        Bloc pour faire une boucle For.
+        Bloc pour faire une boucle avec un nombre d'itérations fixées.
     </blockLimit>
 
     <blockLimit blockType="While">
@@ -41,50 +41,50 @@
     </blockLimit>
 
     <blockLimit blockType="Forever">
-        Bloc [insérer description "Forever"].
+        Bloc infini.
     </blockLimit>
 
     <blockLimit blockType="AndOperator">
-        Bloc opérateur ET.
+        Bloc opérateur logique ET.
     </blockLimit>
 
     <blockLimit blockType="OrOperator">
-        Bloc opérateur OU.
+        Bloc opérateur logique OU.
     </blockLimit>
 
     <blockLimit blockType="NotOperator">
-        Bloc opérateur NOT.
+        Bloc opérateur logique NOT.
     </blockLimit>
 
     <blockLimit blockType="WallFront">
-        Bloc [insérer description "WallFront"].
+        Bloc de détection d'un mur en face.
     </blockLimit>
 
     <blockLimit blockType="WallLeft">
-        Bloc [insérer description "WallLeft"].
+        Bloc de détection d'un mur à gauche.
     </blockLimit>
 
     <blockLimit blockType="WallRight">
-        Bloc [insérer description "WallRight"].
+        Bloc de détection d'un mur à droite.
     </blockLimit>
 
     <blockLimit blockType="Enemy">
-        Bloc [insérer description "Enemy"].
+        Bloc de détection d'un ennemi en face.
     </blockLimit>
 
     <blockLimit blockType="RedArea">
-        Bloc [insérer description "RedArea"].
+        Bloc de détection d'une zone rouge en face.
     </blockLimit>
 
     <blockLimit blockType="FieldGate">
-        Bloc [insérer description "FieldGate"].
+        Bloc de détection d'une porte en face.
     </blockLimit>
 
     <blockLimit blockType="Terminal">
-        Bloc [insérer description "Terminal"].
+        Bloc de détection d'un terminal en face.
     </blockLimit>
 
     <blockLimit blockType="Exit">
-        Bloc [insérer description "Exit"].
+        Bloc de détection d'une sortie en face.
     </blockLimit>
 </doc>

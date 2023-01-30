@@ -160,4 +160,5 @@
   </items>
   <decoration name="Modern Furniture/Prefabs/Book Rack" posY="8" posX="7" direction="0" />
   <script name="Alan" editMode="2" type="3" />
+  <score twoStars="0" threeStars="2500"/>
 </level>

@@ -157,4 +157,5 @@
   <enemy associatedScriptName="Eve" posY="4" posX="7" direction="0" range="3" selfRange="False" typeRange="0" />
   <enemy associatedScriptName="Eve" posY="3" posX="6" direction="2" range="3" selfRange="False" typeRange="0" />
   <script name="Alan" editMode="2" type="3" />
+  <score twoStars="0" threeStars="4000"/>
 </level>

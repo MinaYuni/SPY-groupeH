@@ -169,4 +169,5 @@
       <action type="TurnBack" />
     </forever>
   </script>
+  <score twoStars="0" threeStars="3000"/>
 </level>

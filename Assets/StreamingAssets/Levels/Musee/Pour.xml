@@ -120,4 +120,5 @@
   </items>
   <player associatedScriptName="Alan" posY="3" posX="6" direction="3" />
   <script name="Alan" editMode="2" type="3" />
+  <score twoStars="0" threeStars="5000"/>
 </level>
